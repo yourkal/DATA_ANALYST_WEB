@@ -1,0 +1,36 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.table-rounded {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.table-rounded thead {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.table-rounded tbody {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.zoomable {
+    cursor: pointer;
+    transition: transform 0.2s; /* Efek zoom */
+}
+
+.zoomable:hover {
+    transform: scale(1.05); /* Zoom saat hover */
+}
