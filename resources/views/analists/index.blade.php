@@ -2,27 +2,29 @@
 
 @section('content')
 <div class="container-fluid">
-    <h2 class="my-4">
-        <i class="fas fa-flask"></i> Daftar Data Analist Material PT. Mukti Mandiri Lestari
-    </h2>
+    <div class="heading">
+        <h2 class="my-2">
+            <i class="fas fa-flask"></i> Daftar Data Analist Material PT. Mukti Mandiri Lestari 2
+        </h2>
 
-    <!-- Tombol Tambah Analist -->
-    <a href="{{ route('analists.create', ['page' => request('page')]) }}" class="btn btn-primary mb-3">
-        <i class="fas fa-plus-circle"></i> Tambah Analist
-    </a>
+        <!-- Tombol Tambah Analist -->
+        <a href="{{ route('analists.create', ['page' => request('page')]) }}" class="btn btn-lg btn-primary mb-3 shadow">
+            <i class="fas fa-plus-circle"></i> Tambah Data Analist
+        </a>
 
-    <!-- Form Pencarian -->
-    <form action="{{ route('analists.index') }}" method="GET" class="mb-3">
-        <div class="input-group">
-            <input type="text" class="form-control" name="search" placeholder="Cari berdasarkan Nama Material atau Kategori" value="{{ request()->get('search') }}">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="submit">Cari</button>
+        <!-- Form Pencarian -->
+        <form action="{{ route('analists.index') }}" method="GET" class="mb-3">
+            <div class="input-group">
+                <input type="text" class="form-control" name="search" placeholder="Cari berdasarkan Nama Material atau Kategori" value="{{ request()->get('search') }}">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Cari</button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped w-100 table-rounded">
+    <div class="table-responsive table-responsive-scroll">
+        <table class="table table-bordered table-striped w-100 table-hover table-rounded">
             <thead style="background-color: #007bff; color: white;">
                 <tr>
                     <th class="text-center">No</th>
@@ -36,10 +38,10 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($analists as $analist)
-                    <tr>
+                @forelse($analists as $analist)
+                    <tr class="{{ $analist->kategori === 'Kategori 1' ? 'table-warning' : '' }}">
                         <!-- Menggunakan penomoran yang sesuai dengan pagination -->
-                        <td>{{ $analists->firstItem() + $loop->index }}</td> 
+                        <td>{{ $analists->firstItem() + $loop->index }}</td>
 
                         <td>
                             @if($analist->gambar)
@@ -50,9 +52,8 @@
                         </td>
                         <td>{{ $analist->nama_material }}</td>
                         <td>{{ $analist->kategori }}</td>
-                        <td  style="width: 25%;">{!! nl2br(e($analist->keterangan))!!}</td>
-                        <td  style="width: 25%;">{!! nl2br(e($analist->waktu))!!}</td>
-                        {{-- <td>{{ $analist->waktu }}</td> --}}
+                        <td style="width: 25%;">{!! nl2br(e($analist->keterangan)) !!}</td>
+                        <td style="width: 25%;">{!! nl2br(e($analist->waktu)) !!}</td>
                         <td>
                             @if($analist->file_pdf)
                                 <a href="{{ asset('uploads/' . $analist->file_pdf) }}" class="btn btn-outline-info btn-sm mb-3" target="_blank">Lihat PDF</a>
@@ -96,7 +97,11 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="11" class="text-center">Data tidak ditemukan</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
 
@@ -107,15 +112,13 @@
             @else
                 <a href="{{ $analists->previousPageUrl() }}" class="btn btn-outline-primary">Previous</a>
             @endif
-        
+
             @if ($analists->hasMorePages())
                 <a href="{{ $analists->nextPageUrl() }}" class="btn btn-outline-primary">Next</a>
             @else
                 <span class="btn btn-outline-secondary disabled">Next</span>
             @endif
         </div>
-        
-        
     </div>
 </div>
 @endsection

@@ -11,7 +11,7 @@
         <!-- Other head elements -->
     </head>
     
-    <title>Analists Material | PT.Mukti Mandiri Lestari</title>
+    <title>Data Analists Material | PT.Mukti Mandiri Lestari 2</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
@@ -35,24 +35,29 @@
 <body>
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container-fluid"> <!-- Ganti container menjadi container-fluid -->
-            <a class="navbar-brand" href="{{ route('analists.index') }}">Daftar Data Analist Web</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('analists.index') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('analists.create') }}">Tambah Analist</a>
-                    </li>
-                </ul>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid"> <!-- Ganti container menjadi container-fluid -->
+        <a class="navbar-brand"
+         {{-- href="{{ route('analists.index') }}" --}}
+         >
+            <img src="{{ asset('images/HederLogo.png') }}" alt="Logo" style="height: 50px; width: auto; margin-right: 10px;">
+            {{-- Daftar Data Analist Web --}}
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('analists.index') }}">Data Analist</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- Main Content -->
     <div class="container-fluid"> <!-- Tetap menggunakan container-fluid untuk konten utama -->

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h2 class="my-4">Edit Analist</h2>
+    <h2 class="my-4">Edit Data Analist</h2>
     <form action="{{ route('analists.update', $analist->id) }}" method="POST" enctype="multipart/form-data" class="bg-light p-4 rounded shadow-sm">
         @csrf
         @method('PUT')

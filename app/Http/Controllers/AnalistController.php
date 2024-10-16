@@ -32,7 +32,7 @@ class AnalistController extends Controller
             'keterangan' => 'required',
             'waktu' => 'required|string',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif',
-            'file_pdf' => 'nullable|mimes:pdf|max:10000',
+            'file_pdf' => 'nullable|mimes:pdf|max:1000000',
         ]);
 
         $analist = new Analist();
@@ -54,6 +54,8 @@ class AnalistController extends Controller
         }
 
         $analist->save();
+
+        
         $page = $request->input('page', 1); // Ambil nilai halaman, default ke 1 jika tidak ada
 
     return redirect()->route('analists.index', ['page' => $page]);
@@ -108,4 +110,11 @@ class AnalistController extends Controller
 
     return redirect()->route('analists.index', ['page' => $page]);
     }
+
+    public function dashboard()
+{
+    $totalAnalists = Analist::count(); // Menghitung total data analist
+    return view('dashboard', compact('totalAnalists')); // Mengirim total ke view dashboard
+}
+
 }

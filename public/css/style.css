@@ -1,7 +1,16 @@
+/* Background dan container */
 body {
     background-color: #f8f9fa;
 }
 
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tabel */
 .table-rounded {
     border-radius: 10px;
     overflow: hidden;
@@ -18,19 +27,100 @@ body {
     border-bottom-right-radius: 10px;
 }
 
-
-.container {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Hover efek pada tabel */
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+    transition: background-color 0.3s ease-in-out;
 }
 
+/* Gaya border dan spacing pada sel */
+.table-bordered td, 
+.table-bordered th {
+    border-color: #dee2e6;
+    padding: 12px;
+}
+
+.table-bordered {
+    border-color: #007bff;
+}
+
+/* Gambar dengan efek zoom saat hover */
 .zoomable {
     cursor: pointer;
-    transition: transform 0.2s; /* Efek zoom */
+    transition: transform 0.3s ease-in-out; /* Efek zoom yang lebih halus */
 }
 
 .zoomable:hover {
-    transform: scale(1.05); /* Zoom saat hover */
+    transform: scale(1.1); /* Zoom in saat hover */
+}
+
+/* Tombol "Tambah Data Analist" */
+.btn-success:hover {
+    background-color: #28a787;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan saat di-hover */
+    transform: scale(1.05); /* Sedikit zoom */
+    transition: all 0.2s ease-in-out;
+}
+
+/* Styling untuk modal gambar */
+.modal-dialog {
+    max-width: 90%; /* Memastikan modal tidak terlalu lebar */
+    width: auto;
+    margin: 30px auto;
+}
+
+.modal-content {
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-body {
+    text-align: center; /* Memastikan gambar berada di tengah modal */
+}
+
+.modal-body img {
+    max-width: 100%; /* Membatasi gambar agar tidak melebihi ukuran modal */
+    max-height: 80vh; /* Membatasi tinggi gambar agar tidak melebihi layar */
+    object-fit: contain; /* Memastikan gambar tetap proporsional */
+    transition: transform 0.3s ease-in-out; /* Efek zoom pada gambar */
+}
+
+.modal-body img:hover {
+    transform: scale(1.1); /* Zoom in saat hover pada gambar di modal */
+}
+
+/* Mengatur ukuran tombol close di modal */
+.modal-header .close {
+    font-size: 1.5rem;
+    padding: 1rem;
+    color: #000;
+    opacity: 1;
+}
+
+.modal-header .close:hover {
+    color: #007bff;
+}
+
+/* Tombol aksi */
+.btn-group .btn {
+    border: 1px solid #007bff;
+    margin: 2px;
+}
+
+.btn-group .btn:hover {
+    background-color: #007bff;
+    color: white;
+    transition: all 0.3s;
+}
+
+/* Mengatur scrollbar pada table */
+.table-responsive-scroll {
+    max-height: 400px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* Hides scrollbar in Internet Explorer and Edge */
+    scrollbar-width: none;  /* Hides scrollbar in Firefox */
+}
+
+.table-responsive-scroll::-webkit-scrollbar {
+    display: none;  /* Hides scrollbar in Chrome, Safari, and Opera */
 }

@@ -7,10 +7,11 @@ use App\Http\Controllers\AnalistController;
 //     return view('welcome');
 // });
 
-
+// Route Home/Dashboard
+Route::get('/', [AnalistController::class, 'dashboard'])->name('dashboard');
 
 // Route untuk halaman utama yang menampilkan daftar analist
-Route::get('/', [AnalistController::class, 'index'])->name('analists.index');
+Route::get('/analist', [AnalistController::class, 'index'])->name('analists.index');
 
 // Route untuk halaman form tambah analist
 Route::get('/analists/create', [AnalistController::class, 'create'])->name('analists.create');
