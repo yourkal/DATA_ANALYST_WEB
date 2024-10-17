@@ -8,16 +8,15 @@ use Illuminate\Http\Request;
 class AnalistController extends Controller
 {
     public function index(Request $request)
-{
-    $search = $request->get('search');
-    $analists = Analist::when($search, function ($query, $search) {
-        return $query->where('nama_material', 'like', "%{$search}%")
-                     ->orWhere('kategori', 'like', "%{$search}%");
-    })->paginate(100); // Pagination, membatasi 10 baris per halaman
+    {
+        $search = $request->get('search');
+        $analists = Analist::when($search, function ($query, $search) {
+            return $query->where('nama_material', 'like', "%{$search}%")
+                         ->orWhere('qty', 'like', "%{$search}%"); // Mengganti kategori menjadi qty
+        })->paginate(100); // Pagination, membatasi 100 baris per halaman
 
-    return view('analists.index', compact('analists'));
-}
-
+        return view('analists.index', compact('analists'));
+    }
 
     public function create()
     {
@@ -28,18 +27,18 @@ class AnalistController extends Controller
     {
         $request->validate([
             'nama_material' => 'required',
-            'kategori' => 'required',
+            'qty' => 'required', // Mengganti kategori menjadi qty
             'keterangan' => 'required',
-            'waktu' => 'required|string',
+            'tanggal' => 'required|string', // Mengganti waktu menjadi tanggal
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'file_pdf' => 'nullable|mimes:pdf|max:1000000',
         ]);
 
         $analist = new Analist();
         $analist->nama_material = $request->nama_material;
-        $analist->kategori = $request->kategori;
+        $analist->qty = $request->qty; // Mengganti kategori menjadi qty
         $analist->keterangan = $request->keterangan;
-        $analist->waktu = $request->waktu; // Menyimpan waktu sebagai deskripsi teks
+        $analist->tanggal = $request->tanggal; // Mengganti waktu menjadi tanggal
 
         if ($request->hasFile('gambar')) {
             $fileName = time() . '.' . $request->gambar->extension();
@@ -55,10 +54,8 @@ class AnalistController extends Controller
 
         $analist->save();
 
-        
         $page = $request->input('page', 1); // Ambil nilai halaman, default ke 1 jika tidak ada
-
-    return redirect()->route('analists.index', ['page' => $page]);
+        return redirect()->route('analists.index', ['page' => $page]);
     }
 
     public function edit($id)
@@ -71,18 +68,18 @@ class AnalistController extends Controller
     {
         $request->validate([
             'nama_material' => 'required',
-            'kategori' => 'required',
+            'qty' => 'required', // Mengganti kategori menjadi qty
             'keterangan' => 'required',
-            'waktu' => 'required|string',
+            'tanggal' => 'required|string', // Mengganti waktu menjadi tanggal
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'file_pdf' => 'nullable|mimes:pdf|max:10000',
         ]);
 
         $analist = Analist::findOrFail($id);
         $analist->nama_material = $request->nama_material;
-        $analist->kategori = $request->kategori;
+        $analist->qty = $request->qty; // Mengganti kategori menjadi qty
         $analist->keterangan = $request->keterangan;
-        $analist->waktu = $request->waktu; // Menyimpan waktu sebagai deskripsi teks
+        $analist->tanggal = $request->tanggal; // Mengganti waktu menjadi tanggal
 
         if ($request->hasFile('gambar')) {
             $fileName = time() . '.' . $request->gambar->extension();
@@ -97,24 +94,24 @@ class AnalistController extends Controller
         }
 
         $analist->save();
-        $page = $request->input('page', 1); // Ambil nilai halaman, default ke 1 jika tidak ada
 
+        $page = $request->input('page', 1); // Ambil nilai halaman, default ke 1 jika tidak ada
         return redirect()->route('analists.index', ['page' => $page]);
     }
 
-    public function destroy( Request $request, $id)
+    public function destroy(Request $request, $id)
     {
         $analist = Analist::findOrFail($id);
         $analist->delete();
-        $page = $request->input('page', 1); // Ambil nilai halaman, default ke 1 jika tidak ada
 
-    return redirect()->route('analists.index', ['page' => $page]);
+        $page = $request->input('page', 1); // Ambil nilai halaman, default ke 1 jika tidak ada
+        return redirect()->route('analists.index', ['page' => $page]);
     }
 
     public function dashboard()
-{
-    $totalAnalists = Analist::count(); // Menghitung total data analist
-    return view('dashboard', compact('totalAnalists')); // Mengirim total ke view dashboard
-}
-
+    {
+        $totalAnalists = Analist::count(); // Menghitung total data analist
+        $analists = Analist::all(); // Mengambil semua data analist
+        return view('dashboard', compact('totalAnalists', 'analists')); // Mengirim data analist ke view dashboard
+    }
 }

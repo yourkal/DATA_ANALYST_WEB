@@ -16,9 +16,9 @@
         </div>
 
         <div class="form-group row">
-            <label for="kategori" class="col-sm-2 col-form-label">Kategori</label>
+            <label for="qty" class="col-sm-2 col-form-label">Qty</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="kategori" name="kategori" value="{{ $analist->kategori }}" required>
+                <input type="number" class="form-control" id="qty" name="qty" value="{{ $analist->qty }}" required>
             </div>
         </div>
 
@@ -30,9 +30,9 @@
         </div>
 
         <div class="form-group row">
-            <label for="waktu" class="col-sm-2 col-form-label">Deskripsi Waktu</label>
+            <label for="tanggal" class="col-sm-2 col-form-label">Tanggal</label>
             <div class="col-sm-10">
-                <textarea class="form-control" id="waktu" name="waktu" rows="2" required>{{ $analist->waktu }}</textarea>
+                <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{ $analist->tanggal }}" required>
             </div>
         </div>
 

@@ -98,7 +98,7 @@ body {
 }
 
 .modal-header .close:hover {
-    color: #007bff;
+    color: #ff0000;
 }
 
 /* Tombol aksi */
@@ -113,14 +113,22 @@ body {
     transition: all 0.3s;
 }
 
-/* Mengatur scrollbar pada table */
+/* Mengatur scrollbar pada table jika terlalu banyak data */
 .table-responsive-scroll {
     max-height: 400px;
-    overflow-y: scroll;
-    -ms-overflow-style: none;  /* Hides scrollbar in Internet Explorer and Edge */
-    scrollbar-width: none;  /* Hides scrollbar in Firefox */
+    overflow-y: auto;
+    margin-bottom: 15px;
 }
 
-.table-responsive-scroll::-webkit-scrollbar {
-    display: none;  /* Hides scrollbar in Chrome, Safari, and Opera */
-}
+/* Mengatur scrollbar pada table */
+/* .table-responsive-scroll {
+    max-height: 400px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+} */
+
+/* Hides scrollbar in Chrome, Safari, and Opera */
+/* .table-responsive-scroll::-webkit-scrollbar {
+    display: none;  
+} */

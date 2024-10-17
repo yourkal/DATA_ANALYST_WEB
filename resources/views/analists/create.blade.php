@@ -12,28 +12,28 @@
         <div class="form-group row">
             <label for="nama_material" class="col-sm-2 col-form-label">Nama Material</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="nama_material" name="nama_material" required>
+                <input type="text" class="form-control" id="nama_material" name="nama_material" value="{{ old('nama_material') }}" required>
             </div>
         </div>
 
         <div class="form-group row">
-            <label for="kategori" class="col-sm-2 col-form-label">Kategori</label>
+            <label for="qty" class="col-sm-2 col-form-label">Qty</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="kategori" name="kategori" required>
+                <input type="number" class="form-control" id="qty" name="qty" value="{{ old('qty') }}" required>
             </div>
         </div>
 
         <div class="form-group row">
             <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
             <div class="col-sm-10">
-                <textarea class="form-control" id="keterangan" name="keterangan" rows="4" required></textarea>
+                <textarea class="form-control" id="keterangan" name="keterangan" rows="4" required>{{ old('keterangan') }}</textarea>
             </div>
         </div>
 
         <div class="form-group row">
-            <label for="waktu" class="col-sm-2 col-form-label">Deskripsi Waktu</label>
+            <label for="tanggal" class="col-sm-2 col-form-label">Tanggal</label>
             <div class="col-sm-10">
-                <textarea class="form-control" id="waktu" name="waktu" rows="2" required></textarea>
+                <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{ old('tanggal') }}" required>
             </div>
         </div>
 

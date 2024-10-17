@@ -15,7 +15,7 @@
         <!-- Form Pencarian -->
         <form action="{{ route('analists.index') }}" method="GET" class="mb-3">
             <div class="input-group">
-                <input type="text" class="form-control" name="search" placeholder="Cari berdasarkan Nama Material atau Kategori" value="{{ request()->get('search') }}">
+                <input type="text" class="form-control" name="search" placeholder="Cari berdasarkan Nama Material" value="{{ request()->get('search') }}">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary" type="submit">Cari</button>
                 </div>
@@ -28,21 +28,22 @@
             <thead style="background-color: #007bff; color: white;">
                 <tr>
                     <th class="text-center">No</th>
+                    <th class="text-center">Tanggal</th>
                     <th class="text-center">Gambar</th>
                     <th class="text-center">Nama Material</th>
-                    <th class="text-center">Kategori</th>
+                    <th class="text-center">Qty</th>
                     <th class="text-center">Keterangan</th>
-                    <th class="text-center">Waktu</th>
                     <th class="text-center">File PDF</th>
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse($analists as $analist)
-                    <tr class="{{ $analist->kategori === 'Kategori 1' ? 'table-warning' : '' }}">
+                    <tr>
                         <!-- Menggunakan penomoran yang sesuai dengan pagination -->
                         <td>{{ $analists->firstItem() + $loop->index }}</td>
 
+                        <td>{{$analist->tanggal}}</td>
                         <td>
                             @if($analist->gambar)
                                 <img src="{{ asset('uploads/' . $analist->gambar) }}" alt="Gambar" width="100" class="img-thumbnail zoomable" data-toggle="modal" data-target="#imageModal-{{ $analist->id }}">
@@ -51,9 +52,8 @@
                             @endif
                         </td>
                         <td>{{ $analist->nama_material }}</td>
-                        <td>{{ $analist->kategori }}</td>
+                        <td>{{ $analist->qty }}</td>
                         <td style="width: 25%;">{!! nl2br(e($analist->keterangan)) !!}</td>
-                        <td style="width: 25%;">{!! nl2br(e($analist->waktu)) !!}</td>
                         <td>
                             @if($analist->file_pdf)
                                 <a href="{{ asset('uploads/' . $analist->file_pdf) }}" class="btn btn-outline-info btn-sm mb-3" target="_blank">Lihat PDF</a>
@@ -99,7 +99,7 @@
                     </div>
                 @empty
                     <tr>
-                        <td colspan="11" class="text-center">Data tidak ditemukan</td>
+                        <td colspan="8" class="text-center">Data tidak ditemukan</td>
                     </tr>
                 @endforelse
             </tbody>

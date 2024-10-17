@@ -94,7 +94,6 @@
             </h2>
         </div>
     
-        <!-- Row for Cards -->
         <div class="row">
             <!-- Card for Total Data Analist -->
             <div class="col-md-4">
@@ -103,11 +102,57 @@
                     <div class="card-body">
                         <h4>Total Data Analist</h4>
                         <h3>{{ $totalAnalists }}</h3>
-                        <a href="{{ route('analists.index') }}" class="btn btn-light mt-3">Selengkapnya</a>
+                        <a href="{{ route('analists.index') }}" class="btn btn-light mt-3">Selengkapnya..</a>
                     </div>
                 </div>
             </div>
         </div>
+    
+        <!-- Tabel Data Analist -->
+        {{-- <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>No</th>
+                                <th>Gambar</th>
+                                <th>Nama Material</th>
+                                <th>Kategori</th>
+                                <th>Keterangan</th>
+                                <th>Waktu</th>
+                                <th>File PDF</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($analists as $index => $analist)
+                                <tr>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>
+                                        @if($analist->gambar)
+                                            <img src="{{ asset('uploads/' . $analist->gambar) }}" alt="Gambar" width="100">
+                                        @else
+                                            Tidak ada gambar
+                                        @endif
+                                    </td>
+                                    <td>{{ $analist->nama_material }}</td>
+                                    <td>{{ $analist->kategori }}</td>
+                                    <td>{{ $analist->keterangan }}</td>
+                                    <td>{{ $analist->waktu }}</td>
+                                    <td>
+                                        @if($analist->file_pdf)
+                                            <a href="{{ asset('uploads/' . $analist->file_pdf) }}" target="_blank">Lihat PDF</a>
+                                        @else
+                                            Tidak ada file PDF
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> --}}
     </div>
 
     <!-- Bootstrap JS, Popper.js, and jQuery -->
