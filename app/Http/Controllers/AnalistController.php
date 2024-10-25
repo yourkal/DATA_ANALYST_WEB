@@ -13,7 +13,7 @@ class AnalistController extends Controller
         $analists = Analist::when($search, function ($query, $search) {
             return $query->where('nama_material', 'like', "%{$search}%")
                          ->orWhere('qty', 'like', "%{$search}%"); // Mengganti kategori menjadi qty
-        })->paginate(100); // Pagination, membatasi 100 baris per halaman
+        })->paginate(1000); // Pagination, membatasi 100 baris per halaman
 
         return view('analists.index', compact('analists'));
     }
@@ -108,10 +108,21 @@ class AnalistController extends Controller
         return redirect()->route('analists.index', ['page' => $page]);
     }
 
-    public function dashboard()
+    public function dashboard(Request $request)
     {
-        $totalAnalists = Analist::count(); // Menghitung total data analist
-        $analists = Analist::all(); // Mengambil semua data analist
-        return view('dashboard', compact('totalAnalists', 'analists')); // Mengirim data analist ke view dashboard
+        $filterDate = $request->get('filter_date'); // Ambil input filter_date dari request
+        
+        $query = Analist::query();
+    
+        if ($filterDate) {
+            // Jika tanggal dipilih, tampilkan data sesuai tanggal
+            $query->whereDate('tanggal', $filterDate);
+        }
+    
+        $totalAnalists = $query->count(); // Menghitung total data analist
+        $analists = $query->get(); // Mengambil data analist yang sesuai filter
+    
+        return view('dashboard', compact('totalAnalists', 'analists'));
     }
+    
 }

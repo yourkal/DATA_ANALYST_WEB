@@ -1,163 +1,115 @@
 @extends('layouts.app')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="{{ asset('images/LOGO_MUKTI.png') }}" type="image/x-icon">
-    <title>Data Analists Material | PT.Mukti Mandiri Lestari 2</title>
-    
-    <!-- Font Awesome & Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-    <style>
-        body {
-            background-color: #f0f2f5;
-            padding-top: 70px;
-        }
-        
-        /* Styling untuk Navbar */
-        .navbar {
-            width: 100%;
-        }
+@section('content')
+<div class="container-fluid">
 
-        /* Styling untuk heading */
-        .heading h2 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        /* Styling untuk Cards */
-        .card {
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-        }
-
-        .card h4 {
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-
-        .card h3 {
-            font-size: 2rem;
-            font-weight: bold;
-        }
-
-        .card .btn {
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        /* Styling untuk icon */
-        .card i {
-            font-size: 4rem;
-            color: rgba(255, 255, 255, 0.7);
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            opacity: 0.4;
-        }
-
-        /* Responsive Layout */
-        @media (max-width: 768px) {
-            .card h3 {
-                font-size: 1.5rem;
-            }
-
-            .card h4 {
-                font-size: 1rem;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Main Content -->
-    <div class="container-fluid">
-        <div class="heading">
-            <h2 class="my-4">
-                <i class="fas fa-tachometer-alt"></i> Dashboard Data Analist PT. Mukti Mandiri Lestari 2
-            </h2>
+    <!-- Tabel Data Analist -->
+    <div class="container">
+         <!-- Card for Total Data Analist -->
+         <div class="col-md-4">
+            <div class="card bg-primary text-white mb-4 position-relative">
+                <i class="fas fa-database"></i> <!-- Ikon besar di background -->
+                <div class="card-body">
+                    <h4>Total Data Analist</h4>
+                    <h3>{{ $totalAnalists }}</h3>
+                    <a href="{{ route('analists.index') }}" class="btn btn-light mt-3">Selengkapnya..</a>
+                </div>
+            </div>
         </div>
-    
-        <div class="row">
-            <!-- Card for Total Data Analist -->
-            <div class="col-md-4">
-                <div class="card bg-primary text-white mb-4 position-relative">
-                    <i class="fas fa-database"></i> <!-- Ikon besar di background -->
-                    <div class="card-body">
-                        <h4>Total Data Analist</h4>
-                        <h3>{{ $totalAnalists }}</h3>
-                        <a href="{{ route('analists.index') }}" class="btn btn-light mt-3">Selengkapnya..</a>
+
+        {{-- <h1>Dashboard Data Analist</h1> --}}
+        
+        <!-- Form Filter Berdasarkan Tanggal -->
+        <form action="{{ route('dashboard') }}" method="GET">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <h2>Laporan Harian </h2>
+                        <label for="filter_date">Filter Berdasarkan Tanggal:</label>
+                        <input type="date" name="filter_date" id="filter_date" class="form-control" value="{{ request('filter_date') }}">
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary mt-4">Filter</button>
+                </div>
+            </div>
+        </form>
+    
+        <!-- Total Data Analist -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <h4>Total Data Analist: {{ $totalAnalists }}</h4>
             </div>
         </div>
     
         <!-- Tabel Data Analist -->
-        {{-- <div class="row">
-            <div class="col-12">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>No</th>
-                                <th>Gambar</th>
-                                <th>Nama Material</th>
-                                <th>Kategori</th>
-                                <th>Keterangan</th>
-                                <th>Waktu</th>
-                                <th>File PDF</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($analists as $index => $analist)
-                                <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>
-                                        @if($analist->gambar)
-                                            <img src="{{ asset('uploads/' . $analist->gambar) }}" alt="Gambar" width="100">
-                                        @else
-                                            Tidak ada gambar
-                                        @endif
-                                    </td>
-                                    <td>{{ $analist->nama_material }}</td>
-                                    <td>{{ $analist->kategori }}</td>
-                                    <td>{{ $analist->keterangan }}</td>
-                                    <td>{{ $analist->waktu }}</td>
-                                    <td>
-                                        @if($analist->file_pdf)
-                                            <a href="{{ asset('uploads/' . $analist->file_pdf) }}" target="_blank">Lihat PDF</a>
-                                        @else
-                                            Tidak ada file PDF
-                                        @endif
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div> --}}
+        <div class="table-responsive table-responsive-scroll">
+            <table class="table table-bordered table-striped w-100 table-hover table-rounded">
+                <thead style="background-color: #007bff; color: white;">
+                    <tr>
+                        <th class="text-center">No</th>
+                        <th class="text-center">Tanggal</th>
+                        <th class="text-center">Gambar</th>
+                        <th class="text-center">Nama Material</th>
+                        <th class="text-center">Qty</th>
+                        <th class="text-center">Keterangan</th>
+                        <th class="text-center">File PDF</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse($analists as $analist)
+                        <tr>
+                            <!-- Menggunakan penomoran yang sesuai dengan pagination -->
+                            <td>{{  $loop->index+1 }}</td>
+    
+                            <td>{{$analist->tanggal}}</td>
+                            <td>
+                                @if($analist->gambar)
+                                    <img src="{{ asset('uploads/' . $analist->gambar) }}" alt="Gambar" width="100" class="img-thumbnail zoomable" data-toggle="modal" data-target="#imageModal-{{ $analist->id }}">
+                                @else
+                                    <span>Tidak ada gambar</span>
+                                @endif
+                            </td>
+                            <td>{{ $analist->nama_material }}</td>
+                            <td>{{ $analist->qty }}</td>
+                            <td style="width: 25%;">{!! nl2br(e($analist->keterangan)) !!}</td>
+                            <td>
+                                @if($analist->file_pdf)
+                                    <a href="{{ asset('uploads/' . $analist->file_pdf) }}" class="btn btn-outline-info btn-sm mb-3" target="_blank">Lihat PDF</a>
+                                @else
+                                    <span>Tidak ada file</span>
+                                @endif
+                            </td>
+                            
+                        </tr>
+    
+                        <!-- Modal untuk Gambar -->
+                        <div class="modal fade" id="imageModal-{{ $analist->id }}" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel-{{ $analist->id }}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="imageModalLabel-{{ $analist->id }}">Gambar</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="{{ asset('uploads/' . $analist->gambar) }}" alt="Gambar" class="img-fluid">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                        <tr>
+                            <td colspan="8" class="text-center">Data tidak ditemukan</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
     </div>
-
-    <!-- Bootstrap JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+</div>
+@endsection
