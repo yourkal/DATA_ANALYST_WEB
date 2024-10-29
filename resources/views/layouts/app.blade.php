@@ -35,29 +35,38 @@
 <body>
 
     <!-- Navigation Bar -->
+<!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <div class="container-fluid"> <!-- Ganti container menjadi container-fluid -->
-        <a class="navbar-brand"
-         {{-- href="{{ route('analists.index') }}" --}}
-         >
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
             <img src="{{ asset('images/HederLogo.png') }}" alt="Logo" style="height: 50px; width: auto; margin-right: 10px;">
-            {{-- Daftar Data Analist Web --}}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('analists.index') }}">Data Analist</a>
-                </li>
+                @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('analists.index') }}">Data Analist</a>
+                    </li>
+                    <li class="nav-item">
+                        <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                            @csrf
+                            <button type="submit" class="btn btn-link nav-link">Logout</button>
+                        </form>   
+                    </li>
+                @endauth
             </ul>
         </div>
     </div>
 </nav>
+
+
+
 
     <!-- Main Content -->
     <div class="container-fluid"> <!-- Tetap menggunakan container-fluid untuk konten utama -->

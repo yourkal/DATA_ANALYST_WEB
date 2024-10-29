@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Log;
+use Mpdf\Mpdf;
 use App\Models\Analist;
 use Illuminate\Http\Request;
 
@@ -11,8 +13,7 @@ class AnalistController extends Controller
     {
         $search = $request->get('search');
         $analists = Analist::when($search, function ($query, $search) {
-            return $query->where('nama_material', 'like', "%{$search}%")
-                         ->orWhere('qty', 'like', "%{$search}%"); // Mengganti kategori menjadi qty
+            return $query->where('nama_material', 'like', "%{$search}%")->orWhere('qty', 'like', "%{$search}%"); // Mengganti kategori menjadi qty
         })->paginate(1000); // Pagination, membatasi 100 baris per halaman
 
         return view('analists.index', compact('analists'));
@@ -110,19 +111,60 @@ class AnalistController extends Controller
 
     public function dashboard(Request $request)
     {
-        $filterDate = $request->get('filter_date'); // Ambil input filter_date dari request
-        
+        $filterDate = $request->get('filter_date');
+        $filterMaterial = $request->get('filter_material');
+
+        // Buat query untuk analist
         $query = Analist::query();
-    
+
+        // Jika tanggal dipilih
         if ($filterDate) {
-            // Jika tanggal dipilih, tampilkan data sesuai tanggal
             $query->whereDate('tanggal', $filterDate);
         }
-    
-        $totalAnalists = $query->count(); // Menghitung total data analist
-        $analists = $query->get(); // Mengambil data analist yang sesuai filter
-    
-        return view('dashboard', compact('totalAnalists', 'analists'));
+
+        // Jika nama material dipilih
+        if ($filterMaterial) {
+            $query->where('nama_material', 'like', '%' . $filterMaterial . '%');
+        }
+
+        // Mengambil data analist dengan pagination
+        $perPage = 1000; // Ubah sesuai kebutuhan
+        $analists = $query->paginate($perPage);
+
+        // Menghitung total data analist
+        $totalAnalists = $analists->total();
+
+        return view('dashboard', compact('totalAnalists', 'analists', 'filterDate', 'filterMaterial'));
     }
-    
+
+    public function view_pdf(Request $request)
+    {
+        $filterDate = $request->get('filter_date');
+        $filterMaterial = $request->get('filter_material');
+
+        // Mengambil data analist dengan filtering berdasarkan tanggal dan nama material
+        $query = Analist::select('nama_material', 'qty', 'keterangan', 'tanggal', 'gambar');
+
+        // Filter berdasarkan tanggal jika ada
+        if ($filterDate) {
+            $query->whereDate('tanggal', $filterDate);
+        }
+
+        // Filter berdasarkan nama material jika ada
+        if ($filterMaterial) {
+            $query->where('nama_material', 'like', '%' . $filterMaterial . '%');
+        }
+
+        // Ambil semua data analist yang sesuai filter untuk PDF
+        $analists = $query->get();
+
+        // Menghitung total data analist
+        $totalAnalists = $analists->count();
+
+        // Render view dengan Mpdf
+        $mpdf = new \Mpdf\Mpdf();
+        $html = view('pdf.dashboard', compact('totalAnalists', 'analists'))->render();
+        $mpdf->WriteHTML($html);
+        return $mpdf->Output('Data_Analist.pdf', 'I');
+    }
 }
