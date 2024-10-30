@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Okt 2024 pada 09.29
--- Versi server: 10.4.32-MariaDB
--- Versi PHP: 8.2.12
+-- Generation Time: Oct 29, 2024 at 04:18 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,13 +20,11 @@ SET time_zone = "+00:00";
 --
 -- Database: `analist_db`
 --
-CREATE DATABASE IF NOT EXISTS `analist_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `analist_db`;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `analists`
+-- Table structure for table `analists`
 --
 
 CREATE TABLE `analists` (
@@ -42,12 +40,12 @@ CREATE TABLE `analists` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `analists`
+-- Dumping data for table `analists`
 --
 
 INSERT INTO `analists` (`id`, `nama_material`, `qty`, `keterangan`, `tanggal`, `gambar`, `file_pdf`, `created_at`, `updated_at`) VALUES
-(138, 'bullion nikel hydroxide pt nebraksa', '1', '-', '2024-10-17', '1729149072.jpg', '1728543461.pdf', '2024-10-09 23:57:41', '2024-10-17 00:11:12'),
-(139, 'bullion nikel Carbonate pt nebraksa', '-', '-', '0000-00-00', NULL, '1728543495.pdf', '2024-10-09 23:58:15', '2024-10-09 23:58:15'),
+(138, 'bullion nickel hydroxide pt nebraksa', '0', 'Material Utama: Nikel dengan konsentrasi sangat tinggi, mencapai 97.8%.\r\n\r\nPotensi Penjualan: Dengan kandungan Nikel yang sangat tinggi (97.8%), material ini sangat berharga dan berpotensi tinggi untuk dijual, terutama dalam industri yang menggunakan Nikel murni atau alloy berbasis Nikel.\r\n\r\n\r\nPotensi Daur Ulang atau Penguraian: Mengingat konsentrasinya, penguraian atau pemisahan unsur lain dari Nikel kemungkinan kurang efisien. Oleh karena itu, lebih cocok untuk dijual langsung sebagai alloy dengan Nikel tinggi.', '2024-10-17', '1729149072.jpg', '1728543461.pdf', '2024-10-09 23:57:41', '2024-10-28 18:33:00'),
+(139, 'bullion nickel Carbonate pt nebraksa', '0', 'Nikel Dominan (97.2%)\r\n\r\nMaterial Hast D lebih layak dijual karena kandungan Nikel yang tinggi dan perannya yang signifikan dalam berbagai industri. Menguraikan material ini tidak efisien dan mahal, karena unsur-unsur minor memiliki nilai pasar yang rendah dalam jumlah kecil. Jadi, paduan ini lebih cocok dipasarkan dalam bentuk utuh.', '2024-10-17', NULL, '1728543495.pdf', '2024-10-09 23:58:15', '2024-10-28 18:32:49'),
 (140, 'bullion tembaga pt nebraksa', '-', '-', '0000-00-00', NULL, '1728543549.pdf', '2024-10-09 23:59:09', '2024-10-09 23:59:09'),
 (141, 'Nickel carbonate PT nebraksa .', '-', '-', '0000-00-00', NULL, '1728543753.pdf', '2024-10-10 00:02:33', '2024-10-10 00:02:33'),
 (142, 'Nickel hydroxide PT nebraksa .', '-', '-', '0000-00-00', NULL, '1728543808.pdf', '2024-10-10 00:03:28', '2024-10-10 00:03:28'),
@@ -68,17 +66,17 @@ INSERT INTO `analists` (`id`, `nama_material`, `qty`, `keterangan`, `tanggal`, `
 (157, 'tembaga campur 3', '-', '-', '0000-00-00', NULL, '1728723185.pdf', '2024-10-10 02:06:03', '2024-10-12 01:53:05'),
 (158, 'tembaga plat.', '-', '-', '0000-00-00', NULL, '1728551194.pdf', '2024-10-10 02:06:34', '2024-10-10 02:06:34'),
 (159, 'tembaga serbuk', '-', '-', '0000-00-00', NULL, '1728551220.pdf', '2024-10-10 02:07:00', '2024-10-10 02:07:00'),
-(160, 'bullion kabel rf', '-', '-', '0000-00-00', NULL, '1728611795.pdf', '2024-10-10 18:56:35', '2024-10-10 18:56:35'),
+(160, 'bullion kabel rf', '0', 'Kelayakan Dijual atau Diurai:\r\n\r\nKelayakan Dijual:\r\n- Kandungan Copper (67.5%): Copper adalah logam yang sangat berharga dan sangat dicari di pasar. Dengan konsentrasi sebesar 67.5%, material ini lebih cocok dijual sebagai bahan baku berkualitas tinggi untuk industri kabel atau elektronik.\r\n- Kualitas Kabel Tinggi: Kehadiran Silver (Ag) meningkatkan nilai jual material ini karena sifat konduktivitasnya yang tinggi. Silver banyak digunakan dalam kabel premium dan perangkat elektronik dengan performa tinggi.\r\n- Timah (29.2%): Kandungan timah yang signifikan membuat material ini berharga untuk industri solder, yang sering menggunakan paduan timah untuk penyambungan komponen.\r\n\r\nKelayakan Diurai:\r\n- Biaya Pemisahan Tinggi: Meskipun ada beberapa unsur seperti Silver (Ag), Lead (Pb), dan Selenium (Se), pemisahan logam dari paduan ini akan memerlukan proses ekstraksi yang mahal. Dengan Copper sebagai komponen utama, pemisahan elemen-elemen minor ini mungkin tidak efisien secara ekonomis.\r\n- Timbal (Pb) dan Arsenic (As): Kedua elemen ini bersifat toksik, dan proses pemisahan serta pengolahannya memerlukan prosedur khusus untuk menangani limbah berbahaya. Penguraian logam ini bisa menambah biaya lingkungan.\r\nKesimpulan:\r\n- Material Bullion Kabel RF lebih layak dijual daripada diurai. Kandungan Copper (67.5%) dan Timah (29.2%) yang dominan menjadikannya sangat berharga dalam industri kabel, solder, dan elektronik. Meskipun pemisahan beberapa logam seperti Silver mungkin meningkatkan nilai, biaya dan tantangan teknologi yang terlibat tidak sebanding dengan hasilnya. Oleh karena itu, menjual material ini dalam bentuk utuh sebagai bahan kabel berkualitas tinggi adalah opsi terbaik.', '2024-10-19', '1729822233.jpg', '1730096774.pdf', '2024-10-10 18:56:35', '2024-10-27 23:26:14'),
 (161, 'Bullion kabel RF 2.', '-', '-', '0000-00-00', NULL, '1728613734.pdf', '2024-10-10 19:28:54', '2024-10-10 19:28:54'),
 (162, 'plat RF-', '-', '-', '0000-00-00', NULL, '1728614354.pdf', '2024-10-10 19:39:14', '2024-10-10 19:39:14'),
 (163, 'plat RF 2', '-', '-', '0000-00-00', NULL, '1728614401.pdf', '2024-10-10 19:40:01', '2024-10-10 19:40:01'),
-(164, 'Al Plat RF', '-', '-', '0000-00-00', NULL, '1728614872.pdf', '2024-10-10 19:47:53', '2024-10-10 19:47:53'),
+(164, 'Al Plat RF', '0', '-', '2024-10-21', '1729822300.jpg', '1728614872.pdf', '2024-10-10 19:47:53', '2024-10-24 19:11:40'),
 (165, 'Al RF Mangkuk siku', '-', '-', '0000-00-00', NULL, '1728614999.pdf', '2024-10-10 19:49:59', '2024-10-10 19:49:59'),
-(166, 'Al RF Mangkuk siku 1', '-', '-', '0000-00-00', NULL, '1728615145.pdf', '2024-10-10 19:52:25', '2024-10-10 19:52:25'),
-(167, 'Al RF Mangkuk siku 2', '-', '-', '0000-00-00', NULL, '1728615380.pdf', '2024-10-10 19:56:21', '2024-10-10 19:56:21'),
+(166, 'Al RF Mangkuk siku 1', '0', '-', '2024-10-21', '1729825076.jpg', '1728615145.pdf', '2024-10-10 19:52:25', '2024-10-24 19:57:56'),
+(167, 'Al RF Mangkuk siku 2', '0', '-', '2024-10-21', '1729825119.jpg', '1728615380.pdf', '2024-10-10 19:56:21', '2024-10-24 19:58:39'),
 (168, 'Al RF bunga Ag', '-', '-', '0000-00-00', NULL, '1728616447.pdf', '2024-10-10 20:14:07', '2024-10-10 20:14:07'),
-(169, 'bunga RF 2', '-', '-', '0000-00-00', NULL, '1728616496.pdf', '2024-10-10 20:14:56', '2024-10-10 20:14:56'),
-(170, 'Al bunga RF', '-', '-', '0000-00-00', NULL, '1728616669.pdf', '2024-10-10 20:17:49', '2024-10-10 20:17:49'),
+(169, 'bunga RF 2', '0', '-', '2024-10-21', '1729825174.jpg', '1728616496.pdf', '2024-10-10 20:14:56', '2024-10-24 19:59:34'),
+(170, 'Al bunga RF', '0', '-', '2024-10-21', '1729825284.jpg', '1728616669.pdf', '2024-10-10 20:17:49', '2024-10-24 20:01:24'),
 (171, 'Al RF siku 1B', '--', '-', '0000-00-00', NULL, '1728616828.pdf', '2024-10-10 20:20:28', '2024-10-10 20:20:28'),
 (172, 'Al RF siku 2B', '-', '-', '0000-00-00', NULL, '1728617461.pdf', '2024-10-10 20:31:01', '2024-10-10 20:31:01'),
 (173, 'Al ex RF 3.', '-', '-', '0000-00-00', NULL, '1728617864.pdf', '2024-10-10 20:37:44', '2024-10-10 20:37:44'),
@@ -146,7 +144,7 @@ INSERT INTO `analists` (`id`, `nama_material`, `qty`, `keterangan`, `tanggal`, `
 (238, 'scrap', '-', '-', '0000-00-00', NULL, '1728637021.pdf', '2024-10-11 01:57:01', '2024-10-11 01:57:01'),
 (239, 'logam cd', '-', '-', '0000-00-00', NULL, '1728637094.pdf', '2024-10-11 01:58:14', '2024-10-11 01:58:14'),
 (240, 'logam zn', '-', '-', '0000-00-00', NULL, '1728637201.pdf', '2024-10-11 02:00:01', '2024-10-11 02:00:01'),
-(241, 'Baud modul putih', '-', '-', '0000-00-00', NULL, '1728637331.pdf', '2024-10-11 02:02:11', '2024-10-11 02:02:11'),
+(241, 'Baud modul putih', '0', '-', '2024-10-17', NULL, '1728637331.pdf', '2024-10-11 02:02:11', '2024-10-28 18:29:39'),
 (242, 'jarum besi', '-', '-', '0000-00-00', NULL, '1728637514.pdf', '2024-10-11 02:05:14', '2024-10-11 02:05:14'),
 (243, 'Cu skun', '-', '-', '0000-00-00', NULL, '1728637694.pdf', '2024-10-11 02:08:14', '2024-10-11 02:08:14'),
 (244, 'stainles', '-', '-', '0000-00-00', NULL, '1728637747.pdf', '2024-10-11 02:09:07', '2024-10-11 02:09:07'),
@@ -236,16 +234,41 @@ INSERT INTO `analists` (`id`, `nama_material`, `qty`, `keterangan`, `tanggal`, `
 (329, 'termocoper E52', '-', '-', '0000-00-00', NULL, '1728720830.pdf', '2024-10-12 01:13:51', '2024-10-12 01:13:51'),
 (331, 'tembaga serbuk 3', '-', '-', '0000-00-00', NULL, '1728723516.pdf', '2024-10-12 01:58:36', '2024-10-12 01:58:36'),
 (332, 'tembaga batu 3', '-', '-', '0000-00-00', NULL, '1728723650.pdf', '2024-10-12 02:00:50', '2024-10-12 02:00:50'),
-(333, 'sample kabel laut 4', '-', '-', '0000-00-00', NULL, '1728725223.pdf', '2024-10-12 02:27:03', '2024-10-12 02:27:03'),
-(334, 'sample kabel laut 3', '-', '-', '0000-00-00', NULL, '1728725255.pdf', '2024-10-12 02:27:35', '2024-10-12 02:27:35'),
-(335, 'sample kabel laut 2', '-', '-', '0000-00-00', '1728881885.jpg', '1728725320.pdf', '2024-10-12 02:28:41', '2024-10-13 21:58:05'),
+(333, 'sample kabel laut 4', '0', 'Kelayakan Dijual atau Diurai:\r\n\r\n1. Kelayakan Dijual:\r\n- Kandungan Iron (Fe) 97.7%: Material ini memiliki kandungan besi yang sangat tinggi, menjadikannya baja berkualitas yang cocok untuk dijual dalam aplikasi kelautan atau industri yang membutuhkan baja tahan karat atau baja berkekuatan tinggi.\r\n- Silicon dan Manganese: Konsentrasi Si dan Mn memberikan sifat mekanis tambahan seperti ketahanan terhadap korosi dan kekuatan, yang merupakan sifat yang diinginkan dalam material industri.\r\n- Aplikasi Kelautan: Dengan kandungan Zinc (Zn) dan Copper (Cu) yang membantu meningkatkan ketahanan terhadap korosi, material ini sangat cocok untuk aplikasi kelautan atau industri di lingkungan yang terpapar air dan garam.\r\n\r\n2. Kelayakan Diurai:\r\n- Biaya Pemisahan yang Tinggi: Mengurai material ini untuk memisahkan unsur-unsur seperti Zinc (Zn), Copper (Cu), dan Lead (Pb) akan memerlukan teknologi pemisahan yang mahal. Karena konsentrasi unsur-unsur minor seperti Zn, Cu, dan Pb sangat rendah, pemisahan tidak akan ekonomis.\r\n- Iron Dominan: Dengan besi sebagai komponen utama (97.7%), penguraian material ini akan sangat tidak efisien karena sebagian besar material adalah besi, yang harganya relatif rendah dibandingkan dengan logam seperti tembaga atau nikel.\r\n\r\nKesimpulan:\r\nMaterial Sample Kabel Laut 4 lebih layak dijual daripada diurai. Kandungan Iron (Fe) 97.7% dengan tambahan Silicon, Manganese, Zinc, dan Copper menjadikannya baja yang ideal untuk aplikasi kelautan atau industri berat yang membutuhkan ketahanan terhadap korosi dan kekuatan mekanis. Proses penguraian akan mahal dan tidak efisien mengingat sebagian besar komposisi adalah besi, yang memiliki nilai jual lebih tinggi dalam bentuk utuh daripada diurai.', '2024-10-19', '1729825325.jpg', '1729826397.pdf', '2024-10-12 02:27:03', '2024-10-24 20:19:57'),
+(334, 'sample kabel laut 3', '0', 'Kelayakan Dijual atau Diurai:\r\n\r\n1. Kelayakan Dijual:\r\n- Kandungan Iron (Fe) 78.7%: Besi adalah komponen utama dari material ini, yang menunjukkan bahwa material ini adalah paduan baja yang kuat. Material ini memiliki potensi tinggi untuk dijual di pasar industri yang membutuhkan baja dengan ketahanan korosi tinggi, terutama karena tambahan Chromium (Cr) yang signifikan.\r\n- Kandungan Chromium (10.6%) dan Nickel (5.53%): Konsentrasi tinggi Cr dan Ni membuat material ini sangat cocok untuk aplikasi yang memerlukan ketahanan korosi dan kekuatan pada suhu tinggi. Ini menunjukkan bahwa paduan ini memiliki nilai jual tinggi untuk industri yang memerlukan baja tahan karat atau komponen mesin berat.\r\n- Penggunaan dalam Aplikasi Khusus: Material ini lebih cocok untuk aplikasi kelautan, mesin industri, dan bagian mesin yang bekerja dalam kondisi ekstrem karena kombinasi dari Cr, Ni, dan Fe memberikan sifat mekanis dan ketahanan yang sangat baik.\r\n\r\n2. Kelayakan Diurai:\r\n- Biaya Pemisahan yang Tinggi: Mengurai material ini untuk memisahkan elemen-elemen seperti Nickel, Chromium, dan Copper akan memerlukan teknologi dan biaya tinggi. Dengan konsentrasi besi yang sangat dominan (78.7%), pemisahan elemen minor tidak akan memberikan nilai tambah yang sebanding dengan biaya penguraian.\r\n- Unsur Minor Tidak Signifikan: Beberapa elemen seperti Vanadium, Copper, dan Molybdenum ada dalam jumlah kecil dan tidak memberikan keuntungan ekonomi yang signifikan jika dipisahkan. Oleh karena itu, penguraian material ini akan mahal dan tidak efisien.\r\n\r\nKesimpulan:\r\nMaterial Sample Kabel Laut 3 dengan komposisi utama Iron (Fe) 78.7%, Chromium (Cr) 10.6%, dan Nickel (Ni) 5.53% lebih layak dijual daripada diurai. Material ini memiliki sifat yang sangat baik untuk aplikasi industri berat, termasuk dalam kondisi korosif atau suhu tinggi. Penguraian logam minor seperti Ni, Cr, dan Cu akan memerlukan biaya besar dan tidak efisien, sedangkan penjualan material utuh sebagai baja berkinerja tinggi akan lebih menguntungkan.', '2024-10-19', '1729825360.jpg', '1729826430.pdf', '2024-10-12 02:27:35', '2024-10-24 20:20:30'),
+(335, 'sample kabel laut 2', '0', 'Kelayakan Dijual atau Diurai:\r\n\r\n1. Kelayakan Dijual:\r\n- Kandungan Tembaga (Cu) 99.1%: Material ini hampir sepenuhnya terdiri dari tembaga murni, yang merupakan logam yang sangat berharga di pasar. Tembaga memiliki banyak aplikasi industri, terutama dalam kabel listrik, komponen elektronik, dan sistem perpipaan. Nilai jual tembaga yang tinggi membuat material ini sangat layak dijual.\r\n- Aplikasi Elektronik dan Listrik: Karena tembaga dikenal sebagai konduktor listrik dan termal terbaik, material ini sangat cocok untuk dijual ke industri yang memerlukan kabel berkualitas tinggi, komponen elektronik, atau material untuk penghantar listrik.\r\n\r\n2. Kelayakan Diurai:\r\n- Tidak Efisien untuk Diurai: Proses pemisahan unsur-unsur seperti Zinc (Zn), Arsenic (As), dan Silicon (Si) tidak akan ekonomis karena konsentrasinya sangat kecil. Mayoritas material ini terdiri dari tembaga, dan pemisahan elemen minor akan memerlukan teknologi yang mahal dan tidak efisien.\r\n- Penguraian Tidak Dibutuhkan: Dengan kandungan tembaga yang sangat dominan, pemisahan unsur-unsur lain akan membuang-buang sumber daya. Tembaga murni dengan kandungan 99.1% sudah sangat berharga untuk dijual tanpa perlu diurai lebih lanjut.\r\n\r\nKesimpulan:\r\nMaterial Sample Kabel Laut 2 lebih layak dijual daripada diurai. Kandungan Copper (Cu) 99.1% menjadikannya material yang sangat berharga, terutama dalam aplikasi kelistrikan dan elektronik. Tembaga dikenal karena konduktivitas listrik dan termalnya yang tinggi, dan penggunaan langsung dalam aplikasi industri akan lebih menguntungkan daripada mencoba menguraikan unsur-unsur minor yang ada.', '2024-10-19', '1729825387.jpg', '1729826461.pdf', '2024-10-12 02:28:41', '2024-10-24 20:21:01'),
 (336, 'sample kabel laut 1', '-', '-', '0000-00-00', NULL, '1728726228.pdf', '2024-10-12 02:43:48', '2024-10-13 18:10:22'),
-(339, 'RF 1 & 2', '-', '-', '0000-00-00', NULL, '1728886888.pdf', '2024-10-13 23:21:28', '2024-10-13 23:21:28');
+(339, 'RF 1 & 2', '-', '-', '0000-00-00', NULL, '1728886888.pdf', '2024-10-13 23:21:28', '2024-10-13 23:21:28'),
+(341, 'PCB kosong', '0', '-', '2024-10-18', '1729825437.jpg', NULL, '2024-10-17 23:56:53', '2024-10-24 20:03:57'),
+(342, 'PCB power', '0', '-', '2024-10-18', '1729825525.jpg', NULL, '2024-10-18 00:03:05', '2024-10-24 20:05:25'),
+(343, 'PCB jarum', '0', '-', '2024-10-18', '1729825579.jpg', NULL, '2024-10-18 00:04:17', '2024-10-24 20:06:19'),
+(344, 'PCB al plat 1', '0', '-', '2024-10-18', '1729825611.jpg', NULL, '2024-10-18 00:04:58', '2024-10-24 20:06:51'),
+(345, 'PCB al plat 2', '0', '-', '2024-10-18', '1729825671.jpg', NULL, '2024-10-18 00:05:38', '2024-10-24 20:07:51'),
+(346, 'PVC', '0', '-', '2024-10-18', '1729825711.jpg', NULL, '2024-10-18 00:06:46', '2024-10-24 20:08:32'),
+(347, 'Hardisk', '0', '-', '2024-10-18', '1729825742.jpg', NULL, '2024-10-18 00:07:32', '2024-10-24 20:09:02'),
+(348, 'PCB double grees (foto belum ada)', '0', '-', '2024-10-18', '1729235323.jpg', NULL, '2024-10-18 00:08:43', '2024-10-20 19:34:20'),
+(349, 'PCB single grees (foto belum ada)', '0', '-', '2024-10-18', '1729235374.jpg', NULL, '2024-10-18 00:09:34', '2024-10-20 19:34:48'),
+(350, 'Komponen (gambar belum ada)', '0', '-', '2024-10-18', '1729235435.jpg', NULL, '2024-10-18 00:10:35', '2024-10-20 19:35:18'),
+(359, 'Al Fidder', '0', 'Kesimpulan: Sampel ini lebih cenderung untuk dijual daripada diurai, dengan beberapa pertimbangan:\r\n1.Dijual:\r\n- Sebagian besar komposisi sesuai dengan grade 6063.\r\n- Kadar aluminium tinggi (99.2%).\r\n- Unsur-unsur lain dalam batas yang diizinkan.\r\n- Bisa dijual untuk aplikasi yang tidak terlalu kritis terhadap kadar magnesium.\r\n- Mungkin bisa dijual sebagai grade aluminium yang lebih rendah.\r\n\r\n2.Diurai:\r\n- Kadar magnesium terlalu rendah untuk grade 6063 standar.\r\n- Jika digunakan untuk aplikasi yang memerlukan sifat mekanik spesifik dari 6063.', '2024-10-19', '1729825801.jpg', '1729826530.pdf', '2024-10-18 18:15:38', '2024-10-24 20:22:10'),
+(360, 'Al Travo', '0', 'Kelayakan Dijual atau Diurai:\r\n1. Kelayakan Dijual:\r\n- Kandungan Aluminium (Al) 99.3%: Kandungan Aluminium yang sangat tinggi membuat material ini sangat berharga di pasar logam, terutama di sektor konstruksi dan manufaktur. Paduan aluminium 6063 sangat cocok untuk aplikasi struktural seperti bingkai jendela, pintu, dan aplikasi transportasi.\r\n- Komposisi yang Seimbang: Silicon (Si), Magnesium (Mg), dan unsur-unsur lainnya berada dalam rentang yang sesuai untuk paduan aluminium yang sering digunakan dalam aplikasi industri. Tidak ada kebutuhan untuk penguraian atau pemurnian tambahan karena sudah memiliki sifat mekanis yang baik.\r\n\r\n2. Kelayakan Diurai:\r\n- Tidak Efisien untuk Diurai: Meskipun ada beberapa unsur kecil seperti Silver (Ag) dan Titanium (Ti), konsentrasinya terlalu rendah untuk dipisahkan secara efisien. Proses pemisahan dan ekstraksi akan memakan biaya tinggi dan tidak sebanding dengan nilai logam minor tersebut.\r\n- Pemurnian Tidak Diperlukan: Material ini sudah memiliki kandungan Aluminium yang sangat tinggi dan unsur-unsur minor tidak mengganggu performa material. Penguraian akan membuang-buang energi dan biaya tanpa meningkatkan nilai material secara signifikan.', '2024-10-19', '1729825862.jpg', '1729826548.pdf', '2024-10-18 21:51:44', '2024-10-24 20:22:28'),
+(361, 'Al-001', '0', '-', '2024-10-22', '1729579454.jpg', NULL, '2024-10-21 23:44:14', '2024-10-21 23:44:14'),
+(362, 'Al-002', '0', '-', '2024-10-22', '1729579483.jpg', NULL, '2024-10-21 23:44:43', '2024-10-21 23:44:43'),
+(363, 'Al Dynamo Gearbox', '0', '-', '2024-10-22', '1729579537.jpg', NULL, '2024-10-21 23:45:37', '2024-10-21 23:45:37'),
+(364, 'Al antena kathrein', '0', '-', '2024-10-22', '1729579565.jpg', NULL, '2024-10-21 23:46:05', '2024-10-21 23:46:05'),
+(365, 'Al antena BTS Model D', '0', '-', '2024-10-22', '1729579591.jpg', NULL, '2024-10-21 23:46:31', '2024-10-21 23:46:31'),
+(366, 'cu 1', '0', '-', '2024-10-23', '1729825942.jpg', '1729825942.pdf', '2024-10-23 01:40:11', '2024-10-24 20:12:22'),
+(367, 'cu 2', '0', '-', '2024-10-23', '1729825977.jpg', '1729825977.pdf', '2024-10-23 01:41:17', '2024-10-24 20:12:57'),
+(368, 'cu 3', '0', '-', '2024-10-23', '1729826039.jpg', '1729826039.pdf', '2024-10-23 01:41:46', '2024-10-24 20:13:59'),
+(369, 'cu 4', '0', '-', '2024-10-23', '1729826085.jpg', '1729826085.pdf', '2024-10-23 01:42:16', '2024-10-24 20:14:45'),
+(370, 'bullion Cu PT.CAR 1', '0', '-', '2024-10-23', '1729826127.jpg', '1729826127.pdf', '2024-10-23 01:43:07', '2024-10-24 20:15:27'),
+(371, 'bullion Cu PT.CAR 2', '0', '-', '2024-10-23', '1729826199.jpg', '1729826199.pdf', '2024-10-23 01:43:43', '2024-10-24 20:16:39'),
+(372, 'bullion Cu PT.CAR 3', '0', '-', '2024-10-23', '1729826237.jpg', '1729826237.pdf', '2024-10-23 01:46:49', '2024-10-24 20:17:17'),
+(373, 'bullion Cu PT.CAR 4', '0', '-', '2024-10-23', '1729826344.jpg', '1729826344.pdf', '2024-10-23 01:47:22', '2024-10-24 20:19:04');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `cache`
+-- Table structure for table `cache`
 --
 
 CREATE TABLE `cache` (
@@ -257,7 +280,7 @@ CREATE TABLE `cache` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `cache_locks`
+-- Table structure for table `cache_locks`
 --
 
 CREATE TABLE `cache_locks` (
@@ -269,7 +292,7 @@ CREATE TABLE `cache_locks` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -285,7 +308,7 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jobs`
+-- Table structure for table `jobs`
 --
 
 CREATE TABLE `jobs` (
@@ -301,7 +324,7 @@ CREATE TABLE `jobs` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `job_batches`
+-- Table structure for table `job_batches`
 --
 
 CREATE TABLE `job_batches` (
@@ -320,7 +343,7 @@ CREATE TABLE `job_batches` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -330,7 +353,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -339,12 +362,14 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '0001_01_01_000002_create_jobs_table', 1),
 (4, '2024_10_06_062347_create_analists_table', 1),
 (8, '2024_10_09_195912_create_analist_pdfs_table', 2),
-(9, '2024_10_10_020119_update_file_name_column_in_data_analist_table', 3);
+(9, '2024_10_10_020119_update_file_name_column_in_data_analist_table', 3),
+(11, '2024_10_25_081145_modify_name_nullable_in_users_table', 4),
+(12, '2024_10_25_081621_modify_email_nullable_in_users_table', 5);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `password_reset_tokens`
+-- Table structure for table `password_reset_tokens`
 --
 
 CREATE TABLE `password_reset_tokens` (
@@ -356,7 +381,7 @@ CREATE TABLE `password_reset_tokens` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sessions`
+-- Table structure for table `sessions`
 --
 
 CREATE TABLE `sessions` (
@@ -369,85 +394,93 @@ CREATE TABLE `sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `sessions`
+-- Dumping data for table `sessions`
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('yM0p5FydHuaee4HGhEMyk35s9FWvZoJjfRt3Zo1P', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoicjBTaHFDeE14RU0zUDRpUW1rb0RRblR2dFJhN3lhZDdTVGE1VVFWSCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hbmFsaXN0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1729149073);
+('bUasWIqU3a6b3ZHdmtWUmJbkvx35dYEJ19EAI5q2', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoieDFDcUxsdGtwZjV5MTRoWU8xUklUeENoZ2JzVmRMdnBIZUR3WVQ2VSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1730171338);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `username` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `username`) VALUES
+(1, NULL, NULL, NULL, '$2y$12$3yoQ2Z7eypdKoW0qK9/RLubilWjw/mYl1WQ.YqqHxb.3mNdc5Tv4y', NULL, '2024-10-25 01:17:01', '2024-10-25 01:17:01', 'Mukti2');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `analists`
+-- Indexes for table `analists`
 --
 ALTER TABLE `analists`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `cache`
+-- Indexes for table `cache`
 --
 ALTER TABLE `cache`
   ADD PRIMARY KEY (`key`);
 
 --
--- Indeks untuk tabel `cache_locks`
+-- Indexes for table `cache_locks`
 --
 ALTER TABLE `cache_locks`
   ADD PRIMARY KEY (`key`);
 
 --
--- Indeks untuk tabel `failed_jobs`
+-- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indeks untuk tabel `jobs`
+-- Indexes for table `jobs`
 --
 ALTER TABLE `jobs`
   ADD PRIMARY KEY (`id`),
   ADD KEY `jobs_queue_index` (`queue`);
 
 --
--- Indeks untuk tabel `job_batches`
+-- Indexes for table `job_batches`
 --
 ALTER TABLE `job_batches`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `password_reset_tokens`
+-- Indexes for table `password_reset_tokens`
 --
 ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
 
 --
--- Indeks untuk tabel `sessions`
+-- Indexes for table `sessions`
 --
 ALTER TABLE `sessions`
   ADD PRIMARY KEY (`id`),
@@ -455,45 +488,45 @@ ALTER TABLE `sessions`
   ADD KEY `sessions_last_activity_index` (`last_activity`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `analists`
+-- AUTO_INCREMENT for table `analists`
 --
 ALTER TABLE `analists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=341;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=374;
 
 --
--- AUTO_INCREMENT untuk tabel `failed_jobs`
+-- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `jobs`
+-- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

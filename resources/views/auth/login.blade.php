@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login Admin</title>
+    <link rel="icon" href="{{ asset('images/LOGO_MUKTI.png') }}" type="image/x-icon"> <!-- Ganti dengan jalur favicon Anda -->
     <style>
+        /* Gaya CSS Anda di sini */
         body {
             display: flex;
             height: 100vh;
@@ -16,12 +18,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #f4f4f4; /* Ganti warna latar belakang jika perlu */
+            background-color: #f4f4f4;
         }
         .logo {
-            width: 50%; /* Atur lebar gambar sebagai persentase untuk responsivitas */
-            height: auto; /* Membiarkan tinggi otomatis menjaga proporsi */
-            max-width: 500px; /* Max width untuk desktop */
+            width: 50%;
+            height: auto;
+            max-width: 500px;
         }
         .right {
             flex: 1;
@@ -35,8 +37,8 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 90%; /* Menggunakan persentase untuk responsivitas */
-            max-width: 400px; /* Max width untuk desktop */
+            width: 90%;
+            max-width: 400px;
         }
         h2 {
             text-align: center;
@@ -72,22 +74,21 @@
             margin-bottom: 15px;
         }
 
-        /* Media Queries untuk responsivitas */
         @media (max-width: 768px) {
             body {
-                flex-direction: column; /* Mengubah arah flex untuk ponsel */
+                flex-direction: column;
             }
             .left, .right {
-                flex: none; /* Menghilangkan flex agar tidak berukuran sama */
-                height: auto; /* Mengatur tinggi otomatis */
-                padding: 20px; /* Menambahkan padding */
+                flex: none;
+                height: auto;
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
     <div class="left">
-        <img src="{{ asset('images/HederLogo.png') }}" alt="Logo" class="logo"> <!-- Tambahkan kelas logo -->
+        <img src="{{ asset('images/HederLogo.png') }}" alt="Logo" class="logo">
     </div>
     <div class="right">
         <div class="form-container">

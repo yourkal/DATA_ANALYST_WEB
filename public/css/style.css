@@ -132,3 +132,14 @@ body {
 /* .table-responsive-scroll::-webkit-scrollbar {
     display: none;  
 } */
+
+/* Efek 3D pada tombol */
+.btn-3d {
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn-3d:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

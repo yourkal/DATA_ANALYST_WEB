@@ -4,11 +4,11 @@
 <div class="container-fluid">
     <div class="heading">
         <h2 class="my-2">
-            <i class="fas fa-flask"></i> Daftar Data Analist Material PT. Mukti Mandiri Lestari 2
+            <i class="fas fa-flask"></i> Daftar Data Hasil Analist Material PT. Mukti Mandiri Lestari 
         </h2>
 
         <!-- Tombol Tambah Analist -->
-        <a href="{{ route('analists.create', ['page' => request('page')]) }}" class="btn btn-lg btn-primary mb-3 shadow">
+        <a href="{{ route('analists.create', ['page' => request('page')]) }}" class="btn btn-3d btn-lg btn-primary mb-3 shadow">
             <i class="fas fa-plus-circle"></i> Tambah Data Analist
         </a>
 
@@ -48,7 +48,7 @@
                             @if($analist->gambar)
                                 <img src="{{ asset('uploads/' . $analist->gambar) }}" alt="Gambar" width="100" class="img-thumbnail zoomable" data-toggle="modal" data-target="#imageModal-{{ $analist->id }}">
                             @else
-                                <span>Tidak ada gambar</span>
+                                <img src="{{ asset('images/gambar_kosong.png') }}" alt="Gambar Kosong" width="100" class="img-thumbnail zoomable">
                             @endif
                         </td>
                         <td>{{ $analist->nama_material }}</td>
@@ -63,14 +63,14 @@
                         </td>
                         <td>
                             <div class="btn-group" role="group">
-                                <a href="{{ route('analists.edit', ['id' => $analist->id, 'page' => request('page')]) }}" class="btn btn-warning btn-sm">
+                                <a href="{{ route('analists.edit', ['id' => $analist->id, 'page' => request('page')]) }}" class="btn btn-3d btn-warning btn-sm">
                                     <i class="fas fa-edit"></i> Edit
                                 </a>
 
                                 <form action="{{ route('analists.destroy', ['id' => $analist->id, 'page' => request('page')]) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus?')">
+                                    <button type="submit" class="btn btn-3d btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus?')">
                                         <i class="fas fa-trash-alt"></i> Hapus
                                     </button>
                                 </form>

@@ -11,8 +11,10 @@
             <ul>
                 <li>Sesuaikan filter berdasarkan keperluan</li>
                 {{-- <li>Jika ingin membuat laporan harian, bisa filter berdasarkan tanggal</li> --}}
-                <li>Jika ingin mencari/mengunduh data harian, bisa filter berdasarkan tanggal</li>
-                <li>Jika ingin mencari/mengunduh data tertentu, bisa filter berdasarkan nama material</li>
+                <li>Jika ingin mencari/mengunduh data harian, bisa filter <strong> berdasarkan Tanggal Saja</strong></li>
+                <li>Jika ingin mencari/mengunduh data tertentu, bisa filter <strong> berdasarkan Nama Material Saja</strong></li>
+                <li>Jika sudah menginput tanggal/nama material, tekan <strong> Filter </strong>  agar kolom pencarian melakukan filter data yang difilter</li>
+                <li>Jika sudah menginput tanggal/nama material, tekan <strong> Reset Filter </strong>  agar kolom pencarian kosong atau isi dengan yang baru</li>
             </ul>
         </div>
 
@@ -22,15 +24,16 @@
                 <form action="{{ route('dashboard') }}" method="GET" id="filterForm">
                     <div class="row align-items-end">
                         <div class="col-md-6 mb-3">
-                            <label for="filter_date">Filter Berdasarkan Tanggal Saja:</label>
+                            <label for="filter_date"><strong> Berdasarkan Tanggal Saja:</strong></label>
                             <input type="date" name="filter_date" id="filter_date" class="form-control" value="{{ request('filter_date') }}">
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="filter_material">Filter Berdasarkan Nama Material Saja:</label>
+                            <label for="filter_material"><strong> Berdasarkan Nama Material Saja:</strong></label>
                             <input type="text" name="filter_material" id="filter_material" class="form-control" placeholder="Masukan Nama Material..." value="{{ request('filter_material') }}">
                         </div>
                         <div class="col-md-12 mb-3">
-                            <button type="submit" class="btn btn-primary btn-block">Filter</button>
+                            <button type="submit" class="btn btn-3d btn-primary btn-block">Filter</button>
+                            <button type="button" class="btn btn-3d btn-danger btn-block" id="resetFilters">Reset Filter</button>
                         </div>
                     </div>
                 </form>
@@ -38,15 +41,17 @@
             </div>
             
             <div class="col-md-4">
-                <div class="card bg-primary text-white mb-4 shadow" style="border-radius: 12px;">
+                <div class="card btn-3d bg-primary text-white mb-4 shadow" style="border-radius: 12px;">
                     <div class="card-body text-center">
                         <h4 class="card-title"><i class="fa fa-database"></i> Total Data Analist</h4>
-                        <h3 class="card-text">{{ $totalAnalists }}</h3>
+                        <h3 class="card-text">
+                            <strong class="text-white">{{ $analists->total() }}</strong> 
+                        </h3>
                     </div>
                 </div>
             </div>
             <div class="col-md-12 mb-3">
-                <a href="{{ route('view_pdf', ['filter_date' => request('filter_date'), 'filter_material' => request('filter_material')]) }}" class="btn btn-danger mt-3">
+                <a href="{{ route('view_pdf', ['filter_date' => request('filter_date'), 'filter_material' => request('filter_material')]) }}" class="btn btn-3d btn-secondary mt-3">
                     <i class="fa fa-download"></i> Unduh Data Table (PDF)
                 </a>
             </div>            
@@ -77,10 +82,11 @@
                                 @if($analist->gambar)
                                     <img src="{{ asset('uploads/' . $analist->gambar) }}" alt="Gambar" width="100" class="img-thumbnail zoomable" data-toggle="modal" data-target="#imageModal-{{ $analist->id }}">
                                 @else
-                                    <span>Tidak ada gambar</span>
+                                    <img src="{{ asset('images/gambar_kosong.png') }}" alt="Gambar Kosong" width="100" class="img-thumbnail zoomable">
                                 @endif
                             </td>
-                            <td>{{ $analist->nama_material }}</td>
+                            
+                            <td>{ $analist->nama_material }}</td>
                             <td>{{ $analist->qty }}</td>
                             <td style="width: 25%;">{!! nl2br(e($analist->keterangan)) !!}</td>
                             <td>
@@ -122,13 +128,13 @@
                 {{-- Pagination --}}
                 <div class="d-flex justify-content-between align-items-center">
                     @if ($analists->onFirstPage())
-                        <button class="btn btn-secondary" disabled>Kembali</button>
+                        <button class="btn btn-3d btn-secondary" disabled>Kembali</button>
                     @else
-                        <a href="{{ $analists->previousPageUrl() }}" class="btn btn-primary">Kembali</a>
+                        <a href="{{ $analists->previousPageUrl() }}" class="btn btn-3d btn-primary">Kembali</a>
                     @endif
                 
                     @if ($analists->hasMorePages())
-                        <a href="{{ $analists->nextPageUrl() }}" class="btn btn-primary">Selanjutnya</a>
+                        <a href="{{ $analists->nextPageUrl() }}" class="btn btn-3d btn-primary">Selanjutnya</a>
                     @else
                         <button class="btn btn-secondary" disabled>Selanjutnya</button>
                     @endif
@@ -139,11 +145,45 @@
 
 <!-- JavaScript to clear input fields on form submit -->
 <script>
-    document.getElementById("filterForm").addEventListener("submit", function(event) {
-        setTimeout(() => {
-            document.getElementById("filter_material").value = "";
-            document.getElementById("filter_date").value = "";
-        }, 100);
-    });
+   document.getElementById('resetFilters').addEventListener('click', function() {
+    document.getElementById('filter_date').value = '';
+    document.getElementById('filter_material').value = '';
+    // Jika Anda ingin mengarahkan pengguna kembali ke halaman tanpa filter
+    window.location.href = "{{ route('dashboard') }}";
+});
 </script>
+
+<style>
+    /* Efek 3D pada tombol */
+    .btn-3d {
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-3d:active {
+        transform: translateY(3px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Mengatur radius dan gaya pada card dan filter */
+    .card {
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        transition: box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-control {
+        border-radius: 8px;
+    }
+
+    /* Efek 3D pada card keterangan */
+    .alert-info {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
 @endsection

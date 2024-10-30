@@ -163,7 +163,7 @@ class AnalistController extends Controller
 
         // Render view dengan Mpdf
         $mpdf = new \Mpdf\Mpdf();
-        $html = view('pdf.dashboard', compact('totalAnalists', 'analists'))->render();
+        $html = view('pdf.halamanPDF', compact('totalAnalists', 'analists'))->render();
         $mpdf->WriteHTML($html);
         return $mpdf->Output('Data_Analist.pdf', 'I');
     }
