@@ -7,7 +7,7 @@
         @csrf
         @method('PUT')
         <input type="hidden" name="page" value="{{ request('page') }}">
-        
+
         <div class="form-group row">
             <label for="nama_material" class="col-sm-2 col-form-label">Nama Material</label>
             <div class="col-sm-10">
@@ -25,7 +25,8 @@
         <div class="form-group row">
             <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
             <div class="col-sm-10">
-                <textarea class="form-control" id="keterangan" name="keterangan" rows="4" required>{{ $analist->keterangan }}</textarea>
+                <textarea class="form-control" id="keterangan" name="keterangan" rows="4" required oninput="countWords()">{{ $analist->keterangan }}</textarea>
+                <small id="word-count" class="form-text text-muted">Kata tersisa: 100</small>
             </div>
         </div>
 
@@ -43,6 +44,23 @@
                 @if($analist->gambar)
                     <small class="form-text text-muted">Gambar saat ini:</small>
                     <img src="{{ asset('uploads/' . $analist->gambar) }}" alt="Gambar" class="img-thumbnail mb-3" width="100">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="hapus_gambar" name="hapus_gambar">
+                        <label class="form-check-label" for="hapus_gambar">Hapus Gambar</label>
+                    </div>
+                @endif
+                <small class="form-text text-muted">Format gambar: .jpg, .png, .gif</small>
+            </div>
+        </div>
+        
+        
+        <div class="form-group row">
+            <label for="hasil_analisis" class="col-sm-2 col-form-label">Hasil Spectro</label>
+            <div class="col-sm-10">
+                <input type="file" class="form-control-file" id="hasil_analisis" name="hasil_analisis">
+                @if($analist->hasil_analisis)
+                    <small class="form-text text-muted">Hasil Analisis saat ini:</small>
+                    <img src="{{ asset('uploads/' . $analist->hasil_analisis) }}" alt="Hasil Analisis" class="img-thumbnail mb-3" width="100">
                 @endif
                 <small class="form-text text-muted">Format gambar: .jpg, .png, .gif</small>
             </div>
@@ -67,4 +85,19 @@
         </div>
     </form>
 </div>
+
+<script>
+    function countWords() {
+        const textarea = document.getElementById('keterangan');
+        const wordCountDisplay = document.getElementById('word-count');
+        const words = textarea.value.trim().split(/\s+/).filter(Boolean);
+        
+        if (words.length > 100) {
+            textarea.value = words.slice(0, 100).join(" ");
+        }
+        
+        const remainingWords = 100 - words.length;
+        wordCountDisplay.textContent = `Kata tersisa: ${Math.max(remainingWords, 0)}`;
+    }
+</script>
 @endsection

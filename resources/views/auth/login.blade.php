@@ -101,7 +101,7 @@
                 </div>
                 <div>
                     <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="text" id="password" name="password" required>
                 </div>
                 @if ($errors->has('loginError'))
                     <div class="error-message">

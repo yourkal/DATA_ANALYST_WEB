@@ -32,6 +32,7 @@ class AnalistController extends Controller
             'keterangan' => 'required',
             'tanggal' => 'required|string', // Mengganti waktu menjadi tanggal
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'hasil_analisis' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'file_pdf' => 'nullable|mimes:pdf|max:1000000',
         ]);
 
@@ -45,6 +46,12 @@ class AnalistController extends Controller
             $fileName = time() . '.' . $request->gambar->extension();
             $request->gambar->move(public_path('uploads'), $fileName);
             $analist->gambar = $fileName;
+        }
+
+        if ($request->hasFile('hasil_analisis')) {
+            $hasilAnalisisName = time() . '.' . $request->hasil_analisis->extension();
+            $request->hasil_analisis->move(public_path('uploads'), $hasilAnalisisName);
+            $analist->hasil_analisis = $hasilAnalisisName;
         }
 
         if ($request->hasFile('file_pdf')) {
@@ -69,36 +76,55 @@ class AnalistController extends Controller
     {
         $request->validate([
             'nama_material' => 'required',
-            'qty' => 'required', // Mengganti kategori menjadi qty
+            'qty' => 'required',
             'keterangan' => 'required',
-            'tanggal' => 'required|string', // Mengganti waktu menjadi tanggal
+            'tanggal' => 'required|string',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'hasil_analisis' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'file_pdf' => 'nullable|mimes:pdf|max:10000',
         ]);
-
+    
         $analist = Analist::findOrFail($id);
         $analist->nama_material = $request->nama_material;
-        $analist->qty = $request->qty; // Mengganti kategori menjadi qty
+        $analist->qty = $request->qty;
         $analist->keterangan = $request->keterangan;
-        $analist->tanggal = $request->tanggal; // Mengganti waktu menjadi tanggal
-
+        $analist->tanggal = $request->tanggal;
+    
+        // Hapus gambar jika checkbox diaktifkan
+        if ($request->has('hapus_gambar') && $analist->gambar) {
+            // Hapus file dari direktori
+            $path = public_path('uploads/' . $analist->gambar);
+            if (file_exists($path)) {
+                unlink($path);
+            }
+            // Hapus nama file dari database
+            $analist->gambar = null;
+        }
+    
         if ($request->hasFile('gambar')) {
             $fileName = time() . '.' . $request->gambar->extension();
             $request->gambar->move(public_path('uploads'), $fileName);
             $analist->gambar = $fileName;
         }
-
+    
+        if ($request->hasFile('hasil_analisis')) {
+            $hasilAnalisisName = time() . '.' . $request->hasil_analisis->extension();
+            $request->hasil_analisis->move(public_path('uploads'), $hasilAnalisisName);
+            $analist->hasil_analisis = $hasilAnalisisName;
+        }
+    
         if ($request->hasFile('file_pdf')) {
             $pdfName = time() . '.' . $request->file_pdf->extension();
             $request->file_pdf->move(public_path('uploads'), $pdfName);
             $analist->file_pdf = $pdfName;
         }
-
+    
         $analist->save();
-
-        $page = $request->input('page', 1); // Ambil nilai halaman, default ke 1 jika tidak ada
+    
+        $page = $request->input('page', 1);
         return redirect()->route('analists.index', ['page' => $page]);
     }
+    
 
     public function destroy(Request $request, $id)
     {
@@ -143,7 +169,7 @@ class AnalistController extends Controller
         $filterMaterial = $request->get('filter_material');
 
         // Mengambil data analist dengan filtering berdasarkan tanggal dan nama material
-        $query = Analist::select('nama_material', 'qty', 'keterangan', 'tanggal', 'gambar');
+        $query = Analist::select('nama_material', 'qty', 'keterangan', 'tanggal', 'gambar','hasil_analisis');
 
         // Filter berdasarkan tanggal jika ada
         if ($filterDate) {
@@ -165,6 +191,6 @@ class AnalistController extends Controller
         $mpdf = new \Mpdf\Mpdf();
         $html = view('pdf.halamanPDF', compact('totalAnalists', 'analists'))->render();
         $mpdf->WriteHTML($html);
-        return $mpdf->Output('Data_Analist.pdf', 'I');
+        return $mpdf->Output('Data_Analist.pdf', 'D');
     }
 }

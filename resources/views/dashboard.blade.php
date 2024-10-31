@@ -7,9 +7,9 @@
 
          <!-- Keterangan Filter -->
          <div class="alert alert-info">
-            <strong>Keterangan:</strong>
+            <strong>Keterangan : Sesuaikan filter berdasarkan keperluan</strong>
             <ul>
-                <li>Sesuaikan filter berdasarkan keperluan</li>
+                {{-- <li>Sesuaikan filter berdasarkan keperluan</li> --}}
                 {{-- <li>Jika ingin membuat laporan harian, bisa filter berdasarkan tanggal</li> --}}
                 <li>Jika ingin mencari/mengunduh data harian, bisa filter <strong> berdasarkan Tanggal Saja</strong></li>
                 <li>Jika ingin mencari/mengunduh data tertentu, bisa filter <strong> berdasarkan Nama Material Saja</strong></li>
@@ -59,17 +59,17 @@
         </div>
 
         <!-- Tabel Data Analist -->
-        <div class="table-responsive table-responsive-scroll">
-
+        <div class="table-responsive table-scrollable">
             <table class="table table-bordered table-striped w-100 table-hover table-rounded">
                 <thead style="background-color: #007bff; color: white;">
                     <tr>
                         <th class="text-center">No</th>
                         <th class="text-center">Tanggal</th>
                         <th class="text-center">Gambar</th>
+                        <th class="text-center">Hasil Spectro</th>
                         <th class="text-center">Nama Material</th>
                         <th class="text-center">Qty</th>
-                        <th class="text-center">Keterangan</th>
+                        <th class="text-center">Hasil Analisa</th>
                         <th class="text-center">File PDF</th>
                     </tr>
                 </thead>
@@ -85,10 +85,21 @@
                                     <img src="{{ asset('images/gambar_kosong.png') }}" alt="Gambar Kosong" width="100" class="img-thumbnail zoomable">
                                 @endif
                             </td>
+
+                            <td>
+                                @if ($analist->hasil_analisis)
+                                    <img src="{{ asset('uploads/' . $analist->hasil_analisis) }}" alt="Hasil Analisis"
+                                        width="200" height="auto" class="img-thumbnail zoomable" data-toggle="modal"
+                                        data-target="#hasilModal-{{ $analist->id }}">
+                                @else
+                                    <img src="{{ asset('images/gambar_kosong.png') }}" alt="Gambar Kosong" width="200"
+                                        class="img-thumbnail zoomable">
+                                @endif
+                            </td>
                             
-                            <td>{ $analist->nama_material }}</td>
+                            <td>{{ $analist->nama_material }}</td>
                             <td>{{ $analist->qty }}</td>
-                            <td style="width: 25%;">{!! nl2br(e($analist->keterangan)) !!}</td>
+                            <td style="width: 35%;">{!! nl2br(e($analist->keterangan)) !!}</td>
                             <td>
                                 @if($analist->file_pdf)
                                     <a href="{{ asset('uploads/' . $analist->file_pdf) }}" class="btn btn-outline-info btn-sm mb-3" target="_blank">Lihat PDF</a>
@@ -113,6 +124,34 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal untuk Hasil Analisis -->
+                        <div class="modal fade" id="hasilModal-{{ $analist->id }}" tabindex="-1" role="dialog"
+                            aria-labelledby="hasilModalLabel-{{ $analist->id }}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="hasilModalLabel-{{ $analist->id }}">Hasil Spectro
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        @if ($analist->hasil_analisis)
+                                            <img src="{{ asset('uploads/' . $analist->hasil_analisis) }}"
+                                                alt="Hasil Analisis" class="img-fluid">
+                                        @else
+                                            <p>Tidak ada hasil spectro</p>
+                                        @endif
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Tutup</button>
                                     </div>
                                 </div>
                             </div>

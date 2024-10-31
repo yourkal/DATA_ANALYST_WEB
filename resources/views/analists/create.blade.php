@@ -26,7 +26,8 @@
         <div class="form-group row">
             <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
             <div class="col-sm-10">
-                <textarea class="form-control" id="keterangan" name="keterangan" rows="4" required>{{ old('keterangan') }}</textarea>
+                <textarea class="form-control" id="keterangan" name="keterangan" rows="4" required oninput="countWords()">{{ old('keterangan') }}</textarea>
+                <small id="word-count" class="form-text text-muted">Kata tersisa: 100</small>
             </div>
         </div>
 
@@ -46,6 +47,14 @@
         </div>
 
         <div class="form-group row">
+            <label for="hasil_analisis" class="col-sm-2 col-form-label">Hasil Spectro</label>
+            <div class="col-sm-10">
+                <input type="file" class="form-control-file" id="hasil_analisis" name="hasil_analisis">
+                <small class="form-text text-muted">Format gambar: .jpg, .png, .gif</small>
+            </div>
+        </div>
+
+        <div class="form-group row">
             <label for="file_pdf" class="col-sm-2 col-form-label">File PDF</label>
             <div class="col-sm-10">
                 <input type="file" class="form-control-file" id="file_pdf" name="file_pdf">
@@ -60,4 +69,19 @@
         </div>
     </form>
 </div>
+
+<script>
+    function countWords() {
+        const textarea = document.getElementById('keterangan');
+        const wordCountDisplay = document.getElementById('word-count');
+        const words = textarea.value.trim().split(/\s+/).filter(Boolean);
+        
+        if (words.length > 100) {
+            textarea.value = words.slice(0, 100).join(" ");
+        }
+        
+        const remainingWords = 100 - words.length;
+        wordCountDisplay.textContent = `Kata tersisa: ${Math.max(remainingWords, 0)}`;
+    }
+</script>
 @endsection
