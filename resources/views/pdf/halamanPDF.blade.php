@@ -151,10 +151,10 @@
                 <th class="no-col">No</th>
                 {{-- <th>Tanggal</th> --}}
                 <th class="gambar-col">Gambar</th>
-                <th class="hasil-analisis-col">Hasil Analisis</th>
+                <th class="hasil-analisis-col">Hasil Spectro</th>
                 <th class="nama-material-col">Nama Material</th>
                 <th class="qty-col">Qty</th>
-                <th class="keterangan-col">Keterangan</th> <!-- Tambahkan kelas keterangan-col -->
+                <th class="keterangan-col">Hasil Analisis</th> <!-- Tambahkan kelas keterangan-col -->
             </tr>
         </thead>
         <tbody>
@@ -174,7 +174,7 @@
                             <img src="{{ public_path('uploads/' . $analist->hasil_analisis) }}" alt="Hasil Analisis"
                                 class="hasil-analisis-img">
                         @else
-                            Tidak ada hasil analisis
+                            Tidak ada hasil spectro
                         @endif
                     </td>
                     <td class="nama-material-col">{{ $analist->nama_material }}</td>

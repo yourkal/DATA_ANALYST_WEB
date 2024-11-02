@@ -59,7 +59,7 @@
             <div class="col-sm-10">
                 <input type="file" class="form-control-file" id="hasil_analisis" name="hasil_analisis">
                 @if($analist->hasil_analisis)
-                    <small class="form-text text-muted">Hasil Analisis saat ini:</small>
+                    <small class="form-text text-muted">Hasil Spectro saat ini:</small>
                     <img src="{{ asset('uploads/' . $analist->hasil_analisis) }}" alt="Hasil Analisis" class="img-thumbnail mb-3" width="100">
                 @endif
                 <small class="form-text text-muted">Format gambar: .jpg, .png, .gif</small>
