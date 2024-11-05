@@ -5,19 +5,26 @@ namespace App\Http\Controllers;
 use Log;
 use Mpdf\Mpdf;
 use App\Models\Analist;
+use App\Models\QtyDetail;
 use Illuminate\Http\Request;
 
 class AnalistController extends Controller
 {
     public function index(Request $request)
-    {
-        $search = $request->get('search');
-        $analists = Analist::when($search, function ($query, $search) {
-            return $query->where('nama_material', 'like', "%{$search}%")->orWhere('qty', 'like', "%{$search}%"); // Mengganti kategori menjadi qty
-        })->paginate(1000); // Pagination, membatasi 100 baris per halaman
+{
+    $search = $request->get('search');
+    $tanggal = $request->get('tanggal');
 
-        return view('analists.index', compact('analists'));
-    }
+    $analists = Analist::when($search, function ($query, $search) {
+            return $query->where('nama_material', 'like', "%{$search}%")->orWhere('qty', 'like', "%{$search}%");
+        })
+        ->when($tanggal, function ($query, $tanggal) {
+            return $query->whereDate('tanggal', $tanggal);
+        })
+        ->paginate(100); // Pagination
+
+    return view('analists.index', compact('analists'));
+}
 
     public function create()
     {
@@ -90,14 +97,11 @@ class AnalistController extends Controller
         $analist->keterangan = $request->keterangan;
         $analist->tanggal = $request->tanggal;
     
-        // Hapus gambar jika checkbox diaktifkan
         if ($request->has('hapus_gambar') && $analist->gambar) {
-            // Hapus file dari direktori
             $path = public_path('uploads/' . $analist->gambar);
             if (file_exists($path)) {
                 unlink($path);
             }
-            // Hapus nama file dari database
             $analist->gambar = null;
         }
     
@@ -122,7 +126,9 @@ class AnalistController extends Controller
         $analist->save();
     
         $page = $request->input('page', 1);
-        return redirect()->route('analists.index', ['page' => $page]);
+    
+        // Redirect dengan parameter ID untuk scroll ke data
+        return redirect()->route('analists.index', ['page' => $page, 'highlight' => $analist->id]);
     }
     
 
@@ -154,7 +160,7 @@ class AnalistController extends Controller
         }
 
         // Mengambil data analist dengan pagination
-        $perPage = 1000; // Ubah sesuai kebutuhan
+        $perPage = 100; // Ubah sesuai kebutuhan
         $analists = $query->paginate($perPage);
 
         // Menghitung total data analist
@@ -169,7 +175,7 @@ class AnalistController extends Controller
         $filterMaterial = $request->get('filter_material');
 
         // Mengambil data analist dengan filtering berdasarkan tanggal dan nama material
-        $query = Analist::select('nama_material', 'qty', 'keterangan', 'tanggal', 'gambar','hasil_analisis');
+        $query = Analist::select('nama_material', 'qty', 'keterangan', 'tanggal', 'gambar', 'hasil_analisis');
 
         // Filter berdasarkan tanggal jika ada
         if ($filterDate) {
@@ -192,5 +198,101 @@ class AnalistController extends Controller
         $html = view('pdf.halamanPDF', compact('totalAnalists', 'analists'))->render();
         $mpdf->WriteHTML($html);
         return $mpdf->Output('Data_Analist.pdf', 'I');
+    }
+
+    public function qtyDetail($id)
+    {
+        $analist = Analist::with('qtyDetails')->findOrFail($id);
+        return view('analists.qtyDetail', compact('analist'));
+    }
+    
+
+    public function storeQtyDetail(Request $request, $id)
+    {
+        $request->validate([
+            'tanggal' => 'required|date',
+            'jam' => 'required',
+            'nama_material' => 'required|string',
+            'barang_masuk' => 'required|integer',
+            'barang_keluar' => 'required|integer',
+            'gambar' => 'nullable|image',
+        ]);
+
+        $analist = Analist::findOrFail($id);
+
+        // Buat instance QtyDetail baru
+        $qtyDetail = new QtyDetail();
+        $qtyDetail->tanggal = $request->tanggal;
+        $qtyDetail->jam = $request->jam;
+        $qtyDetail->nama_material = $request->nama_material;
+        $qtyDetail->barang_masuk = $request->barang_masuk;
+        $qtyDetail->barang_keluar = $request->barang_keluar;
+
+        // Simpan gambar jika diunggah
+        if ($request->hasFile('gambar')) {
+            $qtyDetail->gambar = $request->file('gambar')->store('uploads', 'public');
+        }
+
+        // Simpan qtyDetail ke analist
+        $analist->qtyDetails()->save($qtyDetail);
+
+        // Update total qty
+        $totalQty = $analist->qtyDetails->sum('barang_masuk') - $analist->qtyDetails->sum('barang_keluar');
+        $analist->qty = $totalQty;
+        $analist->save();
+
+        return redirect()
+            ->route('analists.qtyDetail', ['id' => $id])
+            ->with('success', 'Qty detail ditambahkan.');
+    }
+
+    public function editQtyDetail($id, $qtyDetailId)
+    {
+        $analist = Analist::findOrFail($id);
+        $qtyDetail = $analist->qtyDetails()->findOrFail($qtyDetailId);
+        return view('analists.editQtyDetail', compact('analist', 'qtyDetail'));
+    }
+
+    public function updateQtyDetail(Request $request, $id, $qtyDetailId)
+    {
+        $request->validate([
+            'tanggal' => 'required|date',
+            'jam' => 'required',
+            'nama_material' => 'required|string|max:255',
+            'barang_masuk' => 'required|integer',
+            'barang_keluar' => 'required|integer',
+            'gambar' => 'nullable|image|max:2048',
+        ]);
+
+        $analist = Analist::findOrFail($id);
+        $qtyDetail = $analist->qtyDetails()->findOrFail($qtyDetailId);
+
+        // Update qty detail
+        $qtyDetail->update($request->all());
+
+        // Update total qty jika perlu
+        $totalQty = $analist->qtyDetails->sum('barang_masuk') - $analist->qtyDetails->sum('barang_keluar');
+        $analist->qty = $totalQty;
+        $analist->save();
+
+        return redirect()
+            ->route('analists.qtyDetail', ['id' => $id])
+            ->with('success', 'Qty detail berhasil diperbarui.');
+    }
+
+    public function deleteQtyDetail($id, $qtyDetailId)
+    {
+        $analist = Analist::findOrFail($id);
+        $qtyDetail = $analist->qtyDetails()->findOrFail($qtyDetailId);
+        $qtyDetail->delete();
+
+        // Update total qty setelah menghapus
+        $totalQty = $analist->qtyDetails->sum('barang_masuk') - $analist->qtyDetails->sum('barang_keluar');
+        $analist->qty = $totalQty;
+        $analist->save();
+
+        return redirect()
+            ->route('analists.qtyDetail', ['id' => $id])
+            ->with('success', 'Qty detail berhasil dihapus.');
     }
 }

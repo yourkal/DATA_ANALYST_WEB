@@ -24,11 +24,11 @@
                 <form action="{{ route('dashboard') }}" method="GET" id="filterForm">
                     <div class="row align-items-end">
                         <div class="col-md-6 mb-3">
-                            <label for="filter_date"><strong> Berdasarkan Tanggal Saja:</strong></label>
+                            <label for="filter_date"><strong> (Berdasarkan Tanggal Saja: )</strong></label>
                             <input type="date" name="filter_date" id="filter_date" class="form-control" value="{{ request('filter_date') }}">
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="filter_material"><strong> Berdasarkan Nama Material Saja:</strong></label>
+                            <label for="filter_material"><strong> (Berdasarkan Nama Material Saja: )</strong></label>
                             <input type="text" name="filter_material" id="filter_material" class="form-control" placeholder="Masukan Nama Material..." value="{{ request('filter_material') }}">
                         </div>
                         <div class="col-md-12 mb-3">
@@ -98,7 +98,12 @@
                             </td>
                             
                             <td>{{ $analist->nama_material }}</td>
-                            <td>{{ $analist->qty }}</td>
+                            {{-- <td>{{ $analist->qty }}</td> --}}
+                            <td>
+                                <a href="{{ route('analists.qtyDetail', $analist->id) }}" class="btn btn-link">
+                                    {{ $analist->qty }}
+                                </a>
+                            </td>  
                             <td style="width: 35%;">{!! nl2br(e($analist->keterangan)) !!}</td>
                             <td>
                                 @if($analist->file_pdf)

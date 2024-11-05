@@ -4,20 +4,18 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnalistController;
 use App\Http\Controllers\AuthController;
 use App\Http\Middleware\Authenticate;
+use App\Http\Controllers\ProduksiController;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
-
+// Route Login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-
-
-
-// =============================================================================================
+// ==============================================================================================================================================================================================================
 // Hanya untuk admin yang login
 Route::middleware([Authenticate::class])->group(function () {
     // Route untuk halaman utama yang menampilkan daftar analist
@@ -32,16 +30,34 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::put('/analists/{id}', [AnalistController::class, 'update'])->name('analists.update');
     // Route untuk menghapus data analist
     Route::delete('/analists/{id}', [AnalistController::class, 'destroy'])->name('analists.destroy');
+
+    //Route Halaman Produksi
+    // Rute untuk menampilkan daftar produksi
+    // Route::get('/produksi', [ProduksiController::class, 'index'])->name('produksi.index');
+    // Rute untuk menampilkan form tambah produksi
+    // Route::get('/produksi/create', [ProduksiController::class, 'create'])->name('produksi.create');
+    // Rute untuk menyimpan data produksi baru
+    // Route::post('/produksi', [ProduksiController::class, 'store'])->name('produksi.store');
+    // Rute untuk menampilkan form edit produksi
+    // Route::get('/produksi/{id}/edit', [ProduksiController::class, 'edit'])->name('produksi.edit');
+    // Rute untuk memperbarui data produksi
+    // Route::put('/produksi/{id}', [ProduksiController::class, 'update'])->name('produksi.update');
+    // Rute untuk menghapus data produksi
+    // Route::delete('/produksi/{id}', [ProduksiController::class, 'destroy'])->name('produksi.destroy');
+
+    // Route untuk menampilkan detail qty
+    // Route::get('/analists/{id}/qty-detail', [AnalistController::class, 'qtyDetail'])->name('analists.qtyDetail');
+    Route::post('/analists/{id}/qty-detail', [AnalistController::class, 'storeQtyDetail'])->name('analists.storeQtyDetail');
+    Route::delete('/analists/{id}/qty-detail/{qtyDetailId}', [AnalistController::class, 'deleteQtyDetail'])->name('analists.deleteQtyDetail');
+    Route::get('/analists/{id}/qty-detail/{qtyDetailId}/edit', [AnalistController::class, 'editQtyDetail'])->name('analists.editQtyDetail');
+    Route::put('/analists/{id}/qty-detail/{qtyDetailId}', [AnalistController::class, 'updateQtyDetail'])->name('analists.updateQtyDetail');
+
 });
-// =============================================================================================
+// =================================================================================================================================================================================
 
-
-
-// Route Home/Dashboard untuk user
+// Route Home/Dashboard untuk user/publik
 Route::get('/', [AnalistController::class, 'dashboard'])->name('dashboard');
 Route::get('/view/pdf', [AnalistController::class, 'view_pdf'])->name('view_pdf');
 
-
-
-
-
+// Route untuk menampilkan detail qty (dapat diakses tanpa login)
+Route::get('/analists/{id}/qty-detail', [AnalistController::class, 'qtyDetail'])->name('analists.qtyDetail');

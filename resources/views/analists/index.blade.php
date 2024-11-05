@@ -6,26 +6,42 @@
             <h2 class="my-2">
                 <i class="fas fa-flask"></i> Daftar Data Hasil Analist Material PT. Mukti Mandiri Lestari
             </h2>
-
-            <!-- Tombol Tambah Analist -->
-            <a href="{{ route('analists.create', ['page' => request('page')]) }}"
-                class="btn btn-3d btn-lg btn-primary mb-3 shadow">
-                <i class="fas fa-plus-circle"></i> Tambah Data Analist
-            </a>
-
             <!-- Form Pencarian -->
-            <form action="{{ route('analists.index') }}" method="GET" class="mb-3">
-                <div class="input-group">
-                    <input type="text" class="form-control" name="search" placeholder="Cari berdasarkan Nama Material"
-                        value="{{ request()->get('search') }}">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="submit">Cari</button>
+            <form action="{{ route('analists.index') }}" method="GET" class="mb-3 p-4 bg-light rounded shadow-sm">
+                <!-- Tombol Tambah Analist -->
+                <a href="{{ route('analists.create', ['page' => request('page')]) }}"
+                    class="btn btn-3d btn-lg btn-primary mb-3 shadow">
+                    <i class="fas fa-plus-circle"></i> Tambah Data Analist
+                </a>
+                <div class="row mb-4">
+
+                    <div class="col-md-3">
+                        <label for="search" class="form-label font-weight-bold" style="color: #000;">Filter Berdasarkan
+                            Nama Material</label>
+                        <input type="text" id="search" class="form-control" name="search" placeholder="Nama Material"
+                            value="{{ request()->get('search') }}" style="padding: 10px; font-size: 14px;">
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="tanggal" class="form-label font-weight-bold" style="color: #000;">Filter Berdasarkan
+                            Tanggal</label>
+                        <input type="date" id="tanggal" class="form-control" name="tanggal"
+                            value="{{ request()->get('tanggal') }}" style="padding: 10px; font-size: 14px;">
+                    </div>
+                    <div class="d-flex justify-content-start align-items-center">
+                        <button class="btn btn-primary me-2" type="submit">
+                            <i class="fas fa-search me-2"></i> Cari
+                        </button>
+                        <a href="{{ route('analists.index') }}" class="btn btn-secondary">
+                            <i class="fas fa-sync me-2"></i> Reset
+                        </a>
                     </div>
                 </div>
             </form>
         </div>
 
         <div class="table-responsive table-responsive-scroll">
+        {{-- <div class="table-responsive"> --}}
             <table class="table table-bordered table-striped w-100 table-hover table-rounded">
                 <thead style="background-color: #007bff; color: white;">
                     <tr>
@@ -42,7 +58,7 @@
                 </thead>
                 <tbody>
                     @forelse($analists as $analist)
-                        <tr>
+                        <tr id="analist-{{ $analist->id }}">
                             <!-- Menggunakan penomoran yang sesuai dengan pagination -->
                             <td>{{ $analists->firstItem() + $loop->index }}</td>
 
@@ -68,7 +84,12 @@
                                 @endif
                             </td>
                             <td>{{ $analist->nama_material }}</td>
-                            <td>{{ $analist->qty }}</td>
+                            <td>
+                                <a href="{{ route('analists.qtyDetail', $analist->id) }}" class="btn btn-link">
+                                    {{ $analist->qty }}
+                                </a>
+                            </td>
+
                             <td style="width: 25%;">{!! nl2br(e($analist->keterangan)) !!}</td>
                             <td>
                                 @if ($analist->file_pdf)
@@ -115,7 +136,8 @@
                                             class="img-fluid">
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Tutup</button>
                                     </div>
                                 </div>
                             </div>
@@ -172,4 +194,13 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const highlightId = "{{ request('highlight') }}";
+            if (highlightId) {
+                window.location.hash = `#analist-${highlightId}`;
+            }
+        });
+    </script>
 @endsection

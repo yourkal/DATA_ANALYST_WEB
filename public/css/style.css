@@ -3,6 +3,66 @@ body {
     background-color: #f8f9fa;
 }
 
+.filter-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.filter-section {
+    margin-bottom: 15px;
+}
+
+.filter-label {
+    display: block;
+    font-size: 16px;
+    color: #000; /* Set text color to black */
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.filter-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-search {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-reset {
+    background-color: #6c757d;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.highlight {
+    background-color: #fffae6; /* Warna kuning lembut */
+    transition: background-color 2s ease; /* Memudarkan warna setelah 2 detik */
+}
+
 .container {
     background-color: #ffffff;
     padding: 20px;
@@ -115,9 +175,9 @@ body {
 
 /* Mengatur scrollbar pada table jika terlalu banyak data */
 .table-responsive-scroll {
-    max-height: 400px;
+    max-height: 550px;
     overflow-y: auto;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 /* Mengatur scrollbar pada table */

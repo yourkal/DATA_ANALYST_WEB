@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2024 at 10:19 AM
+-- Generation Time: Nov 05, 2024 at 09:10 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -47,15 +47,15 @@ CREATE TABLE `analists` (
 --
 
 INSERT INTO `analists` (`id`, `nama_material`, `qty`, `keterangan`, `tanggal`, `gambar`, `file_pdf`, `created_at`, `updated_at`, `hasil_analisis`) VALUES
-(138, 'bullion nickel hydroxide pt nebraksa', '0', '-', '2024-10-30', NULL, '1728543461.pdf', '2024-10-09 23:57:41', '2024-10-30 21:15:37', '1730338022.png'),
+(138, 'bullion nickel hydroxide pt nebraksa', '30', '-', '2024-10-30', NULL, '1728543461.pdf', '2024-10-09 23:57:41', '2024-11-04 20:30:34', '1730338022.png'),
 (139, 'bullion nickel Carbonate pt nebraksa', '0', '-', '2024-10-17', NULL, '1728543495.pdf', '2024-10-09 23:58:15', '2024-10-30 18:28:13', '1730338093.png'),
 (140, 'bullion tembaga pt nebraksa', '0', '-', '2024-10-24', NULL, '1728543549.pdf', '2024-10-09 23:59:09', '2024-10-30 18:30:26', '1730338226.png'),
-(141, 'Nickel carbonate PT nebraksa .', '0', '-', '2024-10-24', NULL, '1728543753.pdf', '2024-10-10 00:02:33', '2024-10-30 18:38:09', '1730338689.jpg'),
+(141, 'Nickel carbonate PT nebraksa .', '0', '-', '2024-10-24', '1730685428.jpg', '1728543753.pdf', '2024-10-10 00:02:33', '2024-11-03 18:57:08', '1730338689.jpg'),
 (142, 'Nickel hydroxide PT nebraksa .', '0', '-', '2024-10-24', NULL, '1728543808.pdf', '2024-10-10 00:03:28', '2024-10-30 18:42:33', '1730338953.png'),
 (143, 'plat tembaga PT nebraksa .', '0', '-', '2024-10-24', NULL, '1728543969.pdf', '2024-10-10 00:06:09', '2024-10-30 18:49:56', '1730339396.jpg'),
 (144, 'kabel 2 (bullion)', '0', '-', '2024-10-24', NULL, '1728550656.pdf', '2024-10-10 01:57:36', '2024-10-30 19:00:53', '1730340053.jpg'),
 (145, 'sample pa ade', '0', '-', '2024-10-24', NULL, '1728550704.pdf', '2024-10-10 01:58:24', '2024-10-30 19:11:47', '1730340707.jpg'),
-(146, 'magnet hardist', '-', '-', '0000-00-00', NULL, '1728550735.pdf', '2024-10-10 01:58:55', '2024-10-10 01:58:55', NULL),
+(146, 'magnet hardist', '0', '-', '2024-10-24', NULL, '1728550735.pdf', '2024-10-10 01:58:55', '2024-11-04 18:49:53', '1730771393.jpg'),
 (147, 'Cu granul.', '0', '-', '2024-10-24', NULL, '1728550779.pdf', '2024-10-10 01:59:39', '2024-10-30 19:21:11', '1730341271.jpg'),
 (148, 'jarum kertas', '0', '-', '2024-10-24', NULL, '1728550801.pdf', '2024-10-10 02:00:01', '2024-10-30 19:31:42', '1730341902.jpg'),
 (149, 'kabel 1 (bullion)', '0', '-', '2024-10-24', NULL, '1728550827.pdf', '2024-10-10 02:00:27', '2024-10-30 19:42:57', '1730342577.jpg'),
@@ -63,7 +63,7 @@ INSERT INTO `analists` (`id`, `nama_material`, `qty`, `keterangan`, `tanggal`, `
 (151, 'sample turki 3.', '0', '-', '2024-10-24', NULL, '1728550884.pdf', '2024-10-10 02:01:25', '2024-10-31 18:41:42', '1730425302.jpg'),
 (152, 'sample turki.', '0', '-', '2024-10-24', NULL, '1728550913.pdf', '2024-10-10 02:01:53', '2024-10-31 18:47:52', '1730425672.jpg'),
 (153, '2-3% sample', '0', '-', '2024-10-24', NULL, '1728550979.pdf', '2024-10-10 02:02:59', '2024-10-31 18:59:31', '1730426371.jpg'),
-(154, '8-11% sample', '0', '-', '2024-10-24', NULL, '1728551008.pdf', '2024-10-10 02:03:28', '2024-10-31 19:06:00', '1730426760.jpg'),
+(154, '8-11% sample', '0', '-', '2024-10-24', NULL, '1728551008.pdf', '2024-10-10 02:03:28', '2024-11-04 23:39:33', '1730426760.jpg'),
 (155, 'sample turki 4.', '0', '-', '2024-10-24', NULL, '1728551098.pdf', '2024-10-10 02:04:58', '2024-10-31 19:12:03', '1730427123.jpg'),
 (156, 'tembaga batu', '0', '-', '2024-10-24', NULL, '1728551131.pdf', '2024-10-10 02:05:31', '2024-10-31 19:16:18', '1730427378.jpg'),
 (157, 'tembaga campur 3', '0', '-', '2024-10-24', NULL, '1728723185.pdf', '2024-10-10 02:06:03', '2024-10-31 19:20:45', '1730427645.jpg'),
@@ -91,7 +91,7 @@ INSERT INTO `analists` (`id`, `nama_material`, `qty`, `keterangan`, `tanggal`, `
 (179, 'Granul kabel RF 1', '0', '-', '2024-10-24', NULL, '1728619442.pdf', '2024-10-10 21:04:02', '2024-10-31 20:43:42', '1730432622.png'),
 (180, 'sample RF pipa kecil', '0', '-', '2024-10-24', NULL, '1728619764.pdf', '2024-10-10 21:09:24', '2024-10-31 20:48:11', '1730432891.jpg'),
 (181, 'Tebal RF 3', '0', '-', '2024-10-24', NULL, '1728620126.pdf', '2024-10-10 21:15:26', '2024-10-31 20:50:26', '1730433026.png'),
-(182, 'Tebal RF 1.', '0', '-', '2024-10-24', NULL, '1728620177.pdf', '2024-10-10 21:16:17', '2024-10-31 20:51:58', '1730433118.png'),
+(182, 'Tebal RF 1', '0', '-', '2024-10-24', NULL, '1728620177.pdf', '2024-10-10 21:16:17', '2024-11-04 23:49:35', '1730433118.png'),
 (183, 'Tebal RF 2', '0', '-', '2024-10-24', NULL, '1728620254.pdf', '2024-10-10 21:17:34', '2024-10-31 20:53:51', '1730433231.png'),
 (184, 'Batang RF 1', '0', '-', '2024-10-24', NULL, '1728620335.pdf', '2024-10-10 21:18:55', '2024-10-31 20:57:24', '1730433444.png'),
 (185, 'Batang RF 2', '0', '-', '2024-10-24', NULL, '1728620377.pdf', '2024-10-10 21:19:37', '2024-10-31 20:59:06', '1730433546.png'),
@@ -102,11 +102,11 @@ INSERT INTO `analists` (`id`, `nama_material`, `qty`, `keterangan`, `tanggal`, `
 (190, 'Tembaga ex Rf M2', '0', '-', '2024-10-24', NULL, '1728626310.pdf', '2024-10-10 22:58:31', '2024-10-31 21:15:09', '1730434509.png'),
 (191, 'cu powder putih x- cable RF', '0', '-', '2024-10-24', NULL, '1728626350.pdf', '2024-10-10 22:59:10', '2024-10-31 21:17:41', '1730434661.png'),
 (192, 'konektor silver RF', '0', '-', '2024-10-24', NULL, '1728626406.pdf', '2024-10-10 23:00:06', '2024-10-31 21:19:15', '1730434755.png'),
-(193, 'slat besi basah', '0', '-', '2024-10-24', NULL, '1728627402.pdf', '2024-10-10 23:16:42', '2024-10-31 23:05:33', '1730441133.png'),
+(193, 'slat besi basah', '0', '-', '2024-10-24', '1730770869.jpg', '1728627402.pdf', '2024-10-10 23:16:42', '2024-11-04 18:41:10', '1730441133.png'),
 (196, 'slat besi kering', '0', '-', '2024-10-24', NULL, '1728628901.pdf', '2024-10-10 23:41:41', '2024-10-31 23:07:19', '1730441239.png'),
 (197, 'kuningan ex konektor module', '0', '-', '2024-10-24', NULL, '1728628959.pdf', '2024-10-10 23:42:39', '2024-10-31 23:08:40', '1730441320.png'),
 (198, 'tembaga plat 3', '0', '-', '2024-10-24', NULL, '1728629433.pdf', '2024-10-10 23:50:33', '2024-10-31 23:14:12', '1730441651.jpg'),
-(199, 'plat Ag tipis kcl', '0', '-', '2024-10-22', NULL, '1728629766.pdf', '2024-10-10 23:56:06', '2024-10-31 23:15:52', '1730441752.png'),
+(199, 'plat Ag tipis kcl', '0', '-', '2024-10-22', NULL, '1728629766.pdf', '2024-10-10 23:56:06', '2024-11-04 23:22:13', '1730441752.png'),
 (200, 'plat Ag tipis bsr', '0', '-', '2024-10-24', NULL, '1728629865.pdf', '2024-10-10 23:57:45', '2024-10-31 23:18:06', '1730441886.png'),
 (201, 'Plat MW', '0', '-', '2024-10-24', NULL, '1728630573.pdf', '2024-10-11 00:09:33', '2024-10-31 23:22:23', '1730442142.jpg'),
 (202, 'plat busbar 1', '0', '-', '2024-10-24', NULL, '1728630694.pdf', '2024-10-11 00:11:34', '2024-10-31 23:24:28', '1730442268.png'),
@@ -130,20 +130,20 @@ INSERT INTO `analists` (`id`, `nama_material`, `qty`, `keterangan`, `tanggal`, `
 (220, 'scrap plat 5', '0', '-', '2024-10-24', NULL, '1728632167.pdf', '2024-10-11 00:36:07', '2024-11-01 00:05:57', '1730444757.png'),
 (221, 'scrap plat 6', '0', '-', '2024-10-24', NULL, '1728632225.pdf', '2024-10-11 00:37:05', '2024-11-01 00:07:16', '1730444836.png'),
 (222, 'scrap plat 7', '0', '-', '2024-10-24', NULL, '1728632253.pdf', '2024-10-11 00:37:33', '2024-11-01 00:08:59', '1730444939.png'),
-(223, 'scrap plat 8', '0', '-', '2024-10-24', NULL, '1728632286.pdf', '2024-10-11 00:38:06', '2024-11-01 00:10:04', '1730445004.png'),
+(223, 'scrap plat 8', '0', '-', '2024-10-24', NULL, '1728632286.pdf', '2024-10-11 00:38:06', '2024-11-04 23:24:53', '1730445004.png'),
 (224, 'scrap plat 9', '0', '-', '2024-10-24', NULL, '1728632338.pdf', '2024-10-11 00:38:58', '2024-11-01 00:11:57', '1730445117.png'),
 (225, 'scrap plat 10', '0', '-', '2024-10-24', NULL, '1728632380.pdf', '2024-10-11 00:39:40', '2024-11-01 00:13:15', '1730445195.png'),
 (226, 'scrap plat 11', '0', '-', '2024-10-24', NULL, '1728632421.pdf', '2024-10-11 00:40:21', '2024-11-01 00:14:48', '1730445288.png'),
 (227, 'scrap plat 12', '0', '-', '2024-10-24', NULL, '1728632470.pdf', '2024-10-11 00:41:10', '2024-11-01 00:15:51', '1730445351.png'),
 (228, 'scrap plat 13', '0', '-', '2024-10-24', NULL, '1728632528.pdf', '2024-10-11 00:42:08', '2024-11-01 00:16:57', '1730445417.png'),
-(229, 'silver konektor module', '0', '-', '2024-10-24', NULL, '1728635280.pdf', '2024-10-11 01:28:00', '2024-11-01 00:18:27', '1730445507.png'),
+(229, 'silver konektor module', '0', '-', '2024-10-24', NULL, '1728635280.pdf', '2024-10-11 01:28:00', '2024-11-04 23:43:45', '1730445507.png'),
 (231, 'abu tembaga', '0', '-', '2024-10-24', NULL, '1728635387.pdf', '2024-10-11 01:29:47', '2024-11-01 00:20:59', '1730445659.png'),
 (232, 'cu powder putih x-voice', '0', '-', '2024-10-24', NULL, '1728635676.pdf', '2024-10-11 01:34:36', '2024-11-01 00:22:51', '1730445771.png'),
 (233, 'socket crom', '0', '-', '2024-10-24', NULL, '1728635706.pdf', '2024-10-11 01:35:06', '2024-11-01 00:24:40', '1730445880.png'),
 (234, 'socket ex olahan', '0', '-', '2024-10-24', NULL, '1728635867.pdf', '2024-10-11 01:37:47', '2024-11-01 00:26:00', '1730445960.png'),
 (235, 'rumah kunci', '0', '-', '2024-10-24', NULL, '1728636677.pdf', '2024-10-11 01:51:17', '2024-11-01 00:29:18', '1730446158.png'),
 (236, 'ttp glas', '0', '-', '2024-10-24', NULL, '1728636739.pdf', '2024-10-11 01:52:19', '2024-11-01 00:30:39', '1730446239.png'),
-(237, 'seng modul', '0', '-', '2024-10-24', NULL, '1728636886.pdf', '2024-10-11 01:54:47', '2024-11-01 00:34:49', '1730446489.jpg'),
+(237, 'seng modul', '0', '-', '2024-10-24', NULL, '1728636886.pdf', '2024-10-11 01:54:47', '2024-11-04 23:39:59', '1730446489.jpg'),
 (238, 'scrap', '0', '-', '2024-10-24', NULL, '1728637021.pdf', '2024-10-11 01:57:01', '2024-11-01 00:40:05', '1730446805.jpg'),
 (239, 'logam cd', '0', '-', '2024-10-24', NULL, '1728637094.pdf', '2024-10-11 01:58:14', '2024-11-01 00:41:25', '1730446885.png'),
 (240, 'logam zn', '0', '-', '2024-10-24', NULL, '1728637201.pdf', '2024-10-11 02:00:01', '2024-11-01 00:47:08', '1730447228.jpg'),
@@ -156,7 +156,7 @@ INSERT INTO `analists` (`id`, `nama_material`, `qty`, `keterangan`, `tanggal`, `
 (247, 'Tembaga putih Panel ex M2', '0', '-', '2024-10-24', NULL, '1728637900.pdf', '2024-10-11 02:11:40', '2024-11-01 01:12:12', '1730448732.png'),
 (249, 'stainless ex module M2', '0', '-', '2024-10-24', NULL, '1728638060.pdf', '2024-10-11 02:14:21', '2024-11-01 01:14:22', '1730448862.png'),
 (250, 'powder refiening M3', '0', '-', '2024-10-24', NULL, '1728638126.pdf', '2024-10-11 02:15:26', '2024-11-01 01:17:22', '1730449042.png'),
-(251, 'Baut grade C eks M2', '0', '-', '2024-10-24', NULL, '1728638300.pdf', '2024-10-11 02:18:20', '2024-11-01 01:21:34', '1730449294.jpg'),
+(251, 'Baut grade C eks M2', '0', '-', '2024-10-24', NULL, '1728638300.pdf', '2024-10-11 02:18:20', '2024-11-04 23:51:09', '1730449294.jpg'),
 (252, 'sample Al 2', '0', '-', '2024-10-24', NULL, '1728638431.pdf', '2024-10-11 02:20:31', '2024-11-01 01:28:49', '1730449728.jpg'),
 (253, 'sample Al 1', '0', '-', '2024-10-24', NULL, '1728638577.pdf', '2024-10-11 02:22:57', '2024-11-01 01:38:42', '1730450322.jpg'),
 (254, 'WG ingot 1 (sample)', '0', '-', '2024-10-24', NULL, '1728638893.pdf', '2024-10-11 02:28:13', '2024-11-01 01:44:11', '1730450651.jpg'),
@@ -185,7 +185,7 @@ INSERT INTO `analists` (`id`, `nama_material`, `qty`, `keterangan`, `tanggal`, `
 (277, 'tanah m3 ke 4', '0', '-', '2024-10-24', NULL, '1728704311.pdf', '2024-10-11 20:38:31', '2024-11-01 19:35:59', '1730514959.jpg'),
 (278, 'sample CU.', '0', '-', '2024-10-24', NULL, '1728704469.pdf', '2024-10-11 20:41:09', '2024-11-01 19:42:41', '1730515361.jpg'),
 (279, 'feeder', '0', '-', '2024-10-24', NULL, '1728704908.pdf', '2024-10-11 20:48:28', '2024-11-01 19:46:34', '1730515594.jpg'),
-(280, 'pipa TI', '-', '-', '0000-00-00', NULL, '1728724210.pdf', '2024-10-11 20:52:36', '2024-10-12 02:10:10', NULL),
+(280, 'pipa TI', '0', '-', '2024-10-24', NULL, '1728724210.pdf', '2024-10-11 20:52:36', '2024-11-04 23:51:38', '1730776857.jpg'),
 (281, 'Nikel001', '0', '-', '2024-10-24', NULL, '1728705217.pdf', '2024-10-11 20:53:37', '2024-11-01 19:50:37', '1730515837.png'),
 (282, 'Al ex feeder guntingan', '0', '-', '2024-10-24', NULL, '1728705297.pdf', '2024-10-11 20:54:57', '2024-11-01 19:54:48', '1730516088.png'),
 (283, 'Al lidi (talon)', '0', '-', '2024-10-24', NULL, '1728705420.pdf', '2024-10-11 20:57:00', '2024-11-01 19:56:03', '1730516163.png'),
@@ -254,15 +254,11 @@ INSERT INTO `analists` (`id`, `nama_material`, `qty`, `keterangan`, `tanggal`, `
 (350, 'Komponen (gambar belum ada)', '0', '-', '2024-10-18', NULL, NULL, '2024-10-18 00:10:35', '2024-10-30 01:38:29', NULL),
 (359, 'Al Fidder', '0', '-', '2024-10-19', '1729825801.jpg', '1729826530.pdf', '2024-10-18 18:15:38', '2024-10-30 00:03:00', '1730271780.png'),
 (360, 'Al Travo', '0', '-', '2024-10-19', '1729825862.jpg', '1729826548.pdf', '2024-10-18 21:51:44', '2024-10-30 00:03:57', '1730271837.png'),
-(361, 'Al-001', '0', '-', '2024-10-22', '1729579454.jpg', NULL, '2024-10-21 23:44:14', '2024-10-21 23:44:14', NULL),
-(362, 'Al-002', '0', '-', '2024-10-22', '1729579483.jpg', NULL, '2024-10-21 23:44:43', '2024-10-21 23:44:43', NULL),
-(363, 'Al Dynamo Gearbox', '0', '-', '2024-10-22', '1729579537.jpg', NULL, '2024-10-21 23:45:37', '2024-10-21 23:45:37', NULL),
-(364, 'Al antena kathrein', '0', '-', '2024-10-22', '1729579565.jpg', NULL, '2024-10-21 23:46:05', '2024-10-21 23:46:05', NULL),
-(365, 'Al antena BTS Model D', '0', '-', '2024-10-22', '1729579591.jpg', NULL, '2024-10-21 23:46:31', '2024-10-21 23:46:31', NULL),
-(366, 'cu 1', '0', '-', '2024-10-23', '1729825942.jpg', '1729825942.pdf', '2024-10-23 01:40:11', '2024-10-24 20:12:22', NULL),
-(367, 'cu 2', '0', '-', '2024-10-23', '1729825977.jpg', '1729825977.pdf', '2024-10-23 01:41:17', '2024-10-24 20:12:57', NULL),
-(368, 'cu 3', '0', '-', '2024-10-23', '1729826039.jpg', '1729826039.pdf', '2024-10-23 01:41:46', '2024-10-24 20:13:59', NULL),
-(369, 'cu 4', '0', '-', '2024-10-23', '1729826085.jpg', '1729826085.pdf', '2024-10-23 01:42:16', '2024-10-24 20:14:45', NULL),
+(361, 'Al-001', '0', '-', '2024-10-22', '1730780542.jpg', NULL, '2024-10-21 23:44:14', '2024-11-04 21:22:23', NULL),
+(362, 'Al-002', '0', '-', '2024-10-22', '1730780726.jpg', NULL, '2024-10-21 23:44:43', '2024-11-04 21:25:26', NULL),
+(363, 'Al Dynamo Gearbox', '0', '-', '2024-10-22', '1730780782.jpg', NULL, '2024-10-21 23:45:37', '2024-11-04 21:26:22', NULL),
+(364, 'Al antena kathrein', '0', '-', '2024-10-22', '1730780824.jpg', NULL, '2024-10-21 23:46:05', '2024-11-04 21:27:04', NULL),
+(365, 'Al antena BTS Model D', '0', '-', '2024-10-22', '1730780879.jpg', NULL, '2024-10-21 23:46:31', '2024-11-04 21:28:00', NULL),
 (370, 'bullion Cu PT.CAR 1', '0', '-', '2024-10-23', '1730269353.jpg', '1729826127.pdf', '2024-10-23 01:43:07', '2024-10-30 00:37:54', '1730269353.png'),
 (371, 'bullion Cu PT.CAR 2', '0', '-', '2024-10-23', '1730269490.jpg', '1729826199.pdf', '2024-10-23 01:43:43', '2024-10-30 01:39:03', '1730269490.png'),
 (372, 'bullion Cu PT.CAR 3', '0', '-', '2024-10-23', '1730269556.jpg', '1729826237.pdf', '2024-10-23 01:46:49', '2024-10-29 23:25:56', '1730269556.png'),
@@ -368,7 +364,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (9, '2024_10_10_020119_update_file_name_column_in_data_analist_table', 3),
 (11, '2024_10_25_081145_modify_name_nullable_in_users_table', 4),
 (12, '2024_10_25_081621_modify_email_nullable_in_users_table', 5),
-(14, '2024_10_30_021938_add_hasil_analisis_to_analists_table', 6);
+(14, '2024_10_30_021938_add_hasil_analisis_to_analists_table', 6),
+(15, '2024_11_04_022210_create_produksis_table', 7),
+(16, '2024_11_04_023204_add_time_to_produksis_table', 8),
+(17, '2024_11_04_041124_update_barang_columns_in_produksis_table', 9),
+(18, '2024_11_04_060809_create_qty_details_table', 10);
 
 -- --------------------------------------------------------
 
@@ -381,6 +381,63 @@ CREATE TABLE `password_reset_tokens` (
   `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `produksis`
+--
+
+CREATE TABLE `produksis` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tanggal` date NOT NULL,
+  `gambar` varchar(255) DEFAULT NULL,
+  `nama_material` varchar(255) NOT NULL,
+  `barang_masuk` int(11) DEFAULT NULL,
+  `barang_keluar` int(11) DEFAULT NULL,
+  `jumlah_akhir` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `jam` time DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `produksis`
+--
+
+INSERT INTO `produksis` (`id`, `tanggal`, `gambar`, `nama_material`, `barang_masuk`, `barang_keluar`, `jumlah_akhir`, `created_at`, `updated_at`, `jam`) VALUES
+(1, '2024-11-04', '1730688494.jpg', 'bullion kabel rf', 100, 50, 50, '2024-11-03 19:48:14', '2024-11-03 19:48:14', '09:47:00'),
+(2, '2024-11-04', '1730694001.jpg', 'bullion kabel rf', 0, 20, -20, '2024-11-03 21:20:01', '2024-11-03 21:20:01', '10:20:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `qty_details`
+--
+
+CREATE TABLE `qty_details` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `analist_id` bigint(20) UNSIGNED NOT NULL,
+  `tanggal` date NOT NULL,
+  `jam` time NOT NULL,
+  `nama_material` varchar(255) NOT NULL,
+  `barang_masuk` int(11) NOT NULL,
+  `barang_keluar` int(11) NOT NULL,
+  `gambar` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `qty_details`
+--
+
+INSERT INTO `qty_details` (`id`, `analist_id`, `tanggal`, `jam`, `nama_material`, `barang_masuk`, `barang_keluar`, `gambar`, `created_at`, `updated_at`) VALUES
+(1, 138, '2024-11-04', '13:41:00', 'bullion nickel hydroxide pt nebraksa', 100, 50, NULL, '2024-11-03 23:41:49', '2024-11-03 23:41:49'),
+(2, 138, '2024-11-04', '14:45:00', 'bullion nickel hydroxide pt nebraksa', 0, 20, NULL, '2024-11-03 23:45:56', '2024-11-03 23:45:56'),
+(3, 138, '2024-11-04', '17:00:00', 'bullion nickel hydroxide pt nebraksa', 40, 0, NULL, '2024-11-03 23:56:43', '2024-11-04 00:09:37'),
+(5, 138, '2024-11-05', '08:52:00', 'bullion nickel hydroxide pt nebraksa', 0, 20, NULL, '2024-11-04 18:52:37', '2024-11-04 20:29:47'),
+(6, 138, '2024-11-05', '10:30:00', 'bullion nickel hydroxide pt nebraksa', 0, 20, NULL, '2024-11-04 20:30:34', '2024-11-04 20:30:34');
 
 -- --------------------------------------------------------
 
@@ -402,7 +459,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('TOGHV3gjEdWNGq28uQbi5lAHzPFYjLtwVD6rFVYO', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiRzNYT09ISDBBM05iWmJYaUR5NEN5UXpyeFNMWXRLSUhHanhwQWNnZiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC92aWV3L3BkZiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1730537716);
+('wCeKkC0NZRx2rhSLiIO7ke21skl89U7JAVf3zNE4', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiVEtuckZtSEdYYmREMHZlVE9nYnloNmZUTGNINTltUlFKek1QS05OeiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hbmFsaXN0cy8xNjEvcXR5LWRldGFpbCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1730794117);
 
 -- --------------------------------------------------------
 
@@ -484,6 +541,19 @@ ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
 
 --
+-- Indexes for table `produksis`
+--
+ALTER TABLE `produksis`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `qty_details`
+--
+ALTER TABLE `qty_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `qty_details_analist_id_foreign` (`analist_id`);
+
+--
 -- Indexes for table `sessions`
 --
 ALTER TABLE `sessions`
@@ -506,7 +576,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `analists`
 --
 ALTER TABLE `analists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=374;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=375;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -524,13 +594,35 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `produksis`
+--
+ALTER TABLE `produksis`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `qty_details`
+--
+ALTER TABLE `qty_details`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `qty_details`
+--
+ALTER TABLE `qty_details`
+  ADD CONSTRAINT `qty_details_analist_id_foreign` FOREIGN KEY (`analist_id`) REFERENCES `analists` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
