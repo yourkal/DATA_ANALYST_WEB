@@ -11,20 +11,23 @@ use Illuminate\Http\Request;
 class AnalistController extends Controller
 {
     public function index(Request $request)
-{
-    $search = $request->get('search');
-    $tanggal = $request->get('tanggal');
-
-    $analists = Analist::when($search, function ($query, $search) {
-            return $query->where('nama_material', 'like', "%{$search}%")->orWhere('qty', 'like', "%{$search}%");
-        })
-        ->when($tanggal, function ($query, $tanggal) {
-            return $query->whereDate('tanggal', $tanggal);
-        })
-        ->paginate(100); // Pagination
-
-    return view('analists.index', compact('analists'));
-}
+    {
+        $search = $request->get('search');
+        $tanggal = $request->get('tanggal');
+    
+        $analists = Analist::when($search, function ($query, $search) {
+                return $query->where('nama_material', 'like', "%{$search}%")
+                             ->orWhere('qty', 'like', "%{$search}%");
+            })
+            ->when($tanggal, function ($query, $tanggal) {
+                return $query->whereDate('tanggal', $tanggal);
+            })
+            ->orderBy('tanggal', 'asc') // Tambahkan orderBy untuk mengurutkan berdasarkan tanggal
+            ->paginate(50); // Sesuaikan pagination sesuai kebutuhan
+    
+        return view('analists.index', compact('analists'));
+    }
+    
 
     public function create()
     {
@@ -34,7 +37,7 @@ class AnalistController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_material' => 'required',
+            'nama_material' => '',
             'qty' => 'required', // Mengganti kategori menjadi qty
             'keterangan' => 'required',
             'tanggal' => 'required|string', // Mengganti waktu menjadi tanggal
@@ -82,7 +85,7 @@ class AnalistController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_material' => 'required',
+            'nama_material' => '',
             'qty' => 'required',
             'keterangan' => 'required',
             'tanggal' => 'required|string',
@@ -160,7 +163,7 @@ class AnalistController extends Controller
         }
 
         // Mengambil data analist dengan pagination
-        $perPage = 100; // Ubah sesuai kebutuhan
+        $perPage = 50; // Ubah sesuai kebutuhan
         $analists = $query->paginate($perPage);
 
         // Menghitung total data analist
@@ -205,7 +208,6 @@ class AnalistController extends Controller
         $analist = Analist::with('qtyDetails')->findOrFail($id);
         return view('analists.qtyDetail', compact('analist'));
     }
-    
 
     public function storeQtyDetail(Request $request, $id)
     {

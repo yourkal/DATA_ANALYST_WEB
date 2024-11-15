@@ -12,7 +12,7 @@
         <div class="form-group row">
             <label for="nama_material" class="col-sm-2 col-form-label">Nama Material</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="nama_material" name="nama_material" value="{{ old('nama_material') }}" required>
+                <input type="text" class="form-control" id="nama_material" name="nama_material" value="{{ old('nama_material') }}">
             </div>
         </div>
 

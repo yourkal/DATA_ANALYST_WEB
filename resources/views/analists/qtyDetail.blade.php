@@ -2,9 +2,10 @@
 
 @section('content')
 <div class="container">
-    <h2>Detail Qty untuk {{ $analist->nama_material }}</h2>
+    {{-- <h2>Detail Qty untuk {{ $analist->nama_material }}</h2> --}}
 
     @auth
+    <h3>Form Tambah Masuk dan Keluar Qty {{ $analist->nama_material }}</h3>
     <form action="{{ route('analists.storeQtyDetail', ['id' => $analist->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
@@ -20,11 +21,11 @@
             <input type="text" name="nama_material" class="form-control" value="{{ $analist->nama_material }}" required>
         </div>
         <div class="form-group">
-            <label for="barang_masuk">Barang Masuk</label>
+            <label for="barang_masuk">Material Masuk</label>
             <input type="number" name="barang_masuk" class="form-control" required>
         </div>
         <div class="form-group">
-            <label for="barang_keluar">Barang Keluar</label>
+            <label for="barang_keluar">Material Keluar</label>
             <input type="number" name="barang_keluar" class="form-control" required>
         </div>
         @auth    
@@ -44,8 +45,8 @@
                     <th>Tanggal</th>
                     <th>Jam</th>
                     <th>Nama Material</th>
-                    <th>Barang Masuk</th>
-                    <th>Barang Keluar</th>
+                    <th>Material Masuk</th>
+                    <th>Material Keluar</th>
                     @auth
                     <th>Aksi</th>
                     @endauth
@@ -83,9 +84,9 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>Total Barang Masuk</th>
-                    <th>Total Barang Keluar</th>
-                    <th>Total Sisa Barang</th>
+                    <th>Total Material Masuk</th>
+                    <th>Total Material Keluar</th>
+                    <th>Total Sisa Material</th>
                 </tr>
             </thead>
             <tbody>
@@ -96,7 +97,6 @@
                 </tr>
             </tbody>
         </table>
-        <hr>
     </div>
 </div>
 

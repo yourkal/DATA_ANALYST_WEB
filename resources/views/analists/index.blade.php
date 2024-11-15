@@ -13,26 +13,30 @@
                     class="btn btn-3d btn-lg btn-primary mb-3 shadow">
                     <i class="fas fa-plus-circle"></i> Tambah Data Analist
                 </a>
-                <div class="row mb-4">
 
-                    <div class="col-md-3">
+                <div class="row align-items-end">
+                    <!-- Filter Berdasarkan Nama Material -->
+                    <div class="col-md-5">
                         <label for="search" class="form-label font-weight-bold" style="color: #000;">Filter Berdasarkan
                             Nama Material</label>
                         <input type="text" id="search" class="form-control" name="search" placeholder="Nama Material"
                             value="{{ request()->get('search') }}" style="padding: 10px; font-size: 14px;">
                     </div>
 
-                    <div class="col-md-3">
+                    <!-- Filter Berdasarkan Tanggal -->
+                    <div class="col-md-5">
                         <label for="tanggal" class="form-label font-weight-bold" style="color: #000;">Filter Berdasarkan
                             Tanggal</label>
                         <input type="date" id="tanggal" class="form-control" name="tanggal"
                             value="{{ request()->get('tanggal') }}" style="padding: 10px; font-size: 14px;">
                     </div>
-                    <div class="d-flex justify-content-start align-items-center">
-                        <button class="btn btn-primary me-2" type="submit">
+
+                    <!-- Tombol Cari dan Reset -->
+                    <div class="col-md-2 d-flex flex-column">
+                        <button class="btn btn-primary w-100 mb-2" type="submit">
                             <i class="fas fa-search me-2"></i> Cari
                         </button>
-                        <a href="{{ route('analists.index') }}" class="btn btn-secondary">
+                        <a href="{{ route('analists.index') }}" class="btn btn-secondary w-100">
                             <i class="fas fa-sync me-2"></i> Reset
                         </a>
                     </div>
@@ -41,7 +45,7 @@
         </div>
 
         <div class="table-responsive table-responsive-scroll">
-        {{-- <div class="table-responsive"> --}}
+            {{-- <div class="table-responsive"> --}}
             <table class="table table-bordered table-striped w-100 table-hover table-rounded">
                 <thead style="background-color: #007bff; color: white;">
                     <tr>
@@ -83,7 +87,7 @@
                                         class="img-thumbnail zoomable">
                                 @endif
                             </td>
-                            <td>{{ $analist->nama_material }}</td>
+                            <td>{{ $analist->nama_material ?? 'belum ada nama' }}</td>
                             <td>
                                 <a href="{{ route('analists.qtyDetail', $analist->id) }}" class="btn btn-link">
                                     {{ $analist->qty }}
@@ -178,20 +182,31 @@
                 </tbody>
             </table>
 
-            <!-- Tampilkan pagination links -->
-            <div class="d-flex justify-content-center">
+            
+
+        </div>
+        <!-- Tampilkan pagination links -->
+        <div class="d-flex justify-content-center">
+            <ul class="pagination">
                 @if ($analists->onFirstPage())
-                    <span class="btn btn-outline-secondary disabled">Previous</span>
+                    <li class="page-item disabled"><span class="page-link">Previous</span></li>
                 @else
-                    <a href="{{ $analists->previousPageUrl() }}" class="btn btn-outline-primary">Previous</a>
+                    <li class="page-item"><a class="page-link"
+                            href="{{ $analists->previousPageUrl() }}">Previous</a></li>
                 @endif
 
+                @for ($i = 1; $i <= $analists->lastPage(); $i++)
+                    <li class="page-item {{ $i == $analists->currentPage() ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $analists->url($i) }}">{{ $i }}</a>
+                    </li>
+                @endfor
+
                 @if ($analists->hasMorePages())
-                    <a href="{{ $analists->nextPageUrl() }}" class="btn btn-outline-primary">Next</a>
+                    <li class="page-item"><a class="page-link" href="{{ $analists->nextPageUrl() }}">Next</a></li>
                 @else
-                    <span class="btn btn-outline-secondary disabled">Next</span>
+                    <li class="page-item disabled"><span class="page-link">Next</span></li>
                 @endif
-            </div>
+            </ul>
         </div>
     </div>
 
