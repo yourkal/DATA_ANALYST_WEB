@@ -3,114 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Admin</title>
-    <link rel="icon" href="{{ asset('images/LOGO_MUKTI.png') }}" type="image/x-icon"> <!-- Ganti dengan jalur favicon Anda -->
+    <title>Login Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Gaya CSS Anda di sini */
         body {
-            display: flex;
-            height: 100vh;
             margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        .left {
-            flex: 1;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: url('{{ asset('images/HederLogo.png') }}') no-repeat center;
+            background-size: 60%; /* Ukuran gambar diperkecil menjadi 60% dari lebar layar */
+            background-position: top center; /* Menempatkan gambar di tengah atas */
+            height: 100vh;
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #f4f4f4;
-        }
-        .logo {
-            width: 50%;
-            height: auto;
-            max-width: 500px;
-        }
-        .right {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #f4f4f4;
+            position: relative;
         }
         .form-container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 90%;
+            background: rgba(255, 255, 255, 0.8); /* Transparansi */
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
             max-width: 400px;
+            width: 100%;
+            margin-top: 95px; /* Tambahkan margin atas untuk memindahkan form ke bawah */
         }
         h2 {
             text-align: center;
+            font-size: 24px;
             margin-bottom: 20px;
+            color: #333;
         }
-        label {
+        .form-container label {
             display: block;
+            font-weight: bold;
             margin-bottom: 5px;
+            color: #555;
         }
-        input[type="text"],
-        input[type="password"] {
+        .form-container input {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 5px;
+            font-size: 16px;
         }
-        button {
+        .form-container button {
             width: 100%;
             padding: 10px;
+            font-size: 16px;
             background-color: #007bff;
-            color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
+            color: white;
             cursor: pointer;
+            transition: 0.3s ease;
         }
-        button:hover {
+        .form-container button:hover {
             background-color: #0056b3;
         }
-        .error-message {
-            color: red;
+        .form-container a {
+            display: block;
             text-align: center;
-            margin-bottom: 15px;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 14px;
         }
-
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
-            .left, .right {
-                flex: none;
-                height: auto;
-                padding: 20px;
-            }
+        .form-container a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="left">
-        <img src="{{ asset('images/HederLogo.png') }}" alt="Logo" class="logo">
-    </div>
-    <div class="right">
-        <div class="form-container">
-            <h2>Login</h2>
-            <form action="{{ route('login') }}" method="POST">
-                @csrf
-                <div>
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div>
-                    <label for="password">Password:</label>
-                    <input type="text" id="password" name="password" required>
-                </div>
-                @if ($errors->has('loginError'))
-                    <div class="error-message">
-                        <strong>{{ $errors->first('loginError') }}</strong>
-                    </div>
-                @endif
-                <button type="submit">Login</button>
-            </form>
-        </div>
+    <div class="form-container">
+        <h2>Login</h2>
+        <form action="{{ route('login') }}" method="POST">
+            @csrf
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="text" id="password" name="password" required>
+            
+            <button type="submit">Login</button>
+        </form>
+        <a href="#">Masukan Username Dan Password Sesuai Admin</a>
+        <a href="#">Analist dan Input Qty Barang</a>
     </div>
 </body>
 </html>

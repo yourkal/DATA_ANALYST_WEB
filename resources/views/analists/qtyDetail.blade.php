@@ -4,34 +4,35 @@
 <div class="container">
     {{-- <h2>Detail Qty untuk {{ $analist->nama_material }}</h2> --}}
 
+    {{-- Tampilkan form hanya jika user login dan bukan user dengan id 1 --}}
     @auth
-    <h3>Form Tambah Masuk dan Keluar Qty {{ $analist->nama_material }}</h3>
-    <form action="{{ route('analists.storeQtyDetail', ['id' => $analist->id]) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="form-group">
-            <label for="tanggal">Tanggal</label>
-            <input type="date" name="tanggal" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="jam">Jam</label>
-            <input type="time" name="jam" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="nama_material">Nama Material</label>
-            <input type="text" name="nama_material" class="form-control" value="{{ $analist->nama_material }}" required>
-        </div>
-        <div class="form-group">
-            <label for="barang_masuk">Material Masuk</label>
-            <input type="number" name="barang_masuk" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="barang_keluar">Material Keluar</label>
-            <input type="number" name="barang_keluar" class="form-control" required>
-        </div>
-        @auth    
-        <button type="submit" class="btn btn-primary">Tambah</button>
-        @endauth
-    </form>
+        @if(Auth::id() !== 1)
+            <h3>Form Tambah Masuk dan Keluar Qty {{ $analist->nama_material }}</h3>
+            <form action="{{ route('analists.storeQtyDetail', ['id' => $analist->id]) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <label for="tanggal">Tanggal</label>
+                    <input type="date" name="tanggal" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="jam">Jam</label>
+                    <input type="time" name="jam" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="nama_material">Nama Material</label>
+                    <input type="text" name="nama_material" class="form-control" value="{{ $analist->nama_material }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="barang_masuk">Material Masuk</label>
+                    <input type="number" name="barang_masuk" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="barang_keluar">Material Keluar</label>
+                    <input type="number" name="barang_keluar" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Tambah</button>
+            </form>
+        @endif
     @endauth
 
     <hr>
@@ -47,8 +48,11 @@
                     <th>Nama Material</th>
                     <th>Material Masuk</th>
                     <th>Material Keluar</th>
+                    {{-- Tampilkan kolom aksi hanya jika user login dan bukan user dengan id 1 --}}
                     @auth
-                    <th>Aksi</th>
+                        @if(Auth::id() !== 1)
+                            <th>Aksi</th>
+                        @endif
                     @endauth
                 </tr>
             </thead>
@@ -61,16 +65,19 @@
                         <td>{{ $detail->nama_material }}</td>
                         <td>{{ $detail->barang_masuk }}</td>
                         <td>{{ $detail->barang_keluar }}</td>
+                        {{-- Tampilkan aksi hanya jika user login dan bukan user dengan id 1 --}}
                         @auth
-                        <td>
-                            <form action="{{ route('analists.deleteQtyDetail', ['id' => $analist->id, 'qtyDetailId' => $detail->id]) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus?')">Hapus</button>
-                            </form>
-                            <a href="{{ route('analists.editQtyDetail', ['id' => $analist->id, 'qtyDetailId' => $detail->id]) }}" class="btn btn-warning btn-sm">Edit</a>
-                        </td>
-                        @endauth                    
+                            @if(Auth::id() !== 1)
+                                <td>
+                                    <form action="{{ route('analists.deleteQtyDetail', ['id' => $analist->id, 'qtyDetailId' => $detail->id]) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus?')">Hapus</button>
+                                    </form>
+                                    <a href="{{ route('analists.editQtyDetail', ['id' => $analist->id, 'qtyDetailId' => $detail->id]) }}" class="btn btn-warning btn-sm">Edit</a>
+                                </td>
+                            @endif
+                        @endauth
                     </tr>
                 @endforeach
             </tbody>

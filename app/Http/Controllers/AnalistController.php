@@ -169,7 +169,12 @@ class AnalistController extends Controller
         // Menghitung total data analist
         $totalAnalists = $analists->total();
 
-        return view('dashboard', compact('totalAnalists', 'analists', 'filterDate', 'filterMaterial'));
+        return view('analists.dashboard', compact('totalAnalists', 'analists', 'filterDate', 'filterMaterial'));
+    }
+
+    public function home()
+    {
+        return view('home');
     }
 
     public function view_pdf(Request $request)

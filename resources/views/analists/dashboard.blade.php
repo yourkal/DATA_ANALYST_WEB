@@ -25,7 +25,7 @@
             <!-- Form Filter Berdasarkan Tanggal dan Card Total Data Analist -->
             <div class="row mb-2">
                 <div class="col-md-8">
-                    <form action="{{ route('dashboard') }}" method="GET" id="filterForm">
+                    <form action="{{ route('analists.dashboard') }}" method="GET" id="filterForm">
                         <div class="row align-items-end">
                             <div class="col-md-6 mb-3">
                                 <label for="filter_date"><strong> (Berdasarkan Tanggal Saja: )</strong></label>
@@ -232,7 +232,7 @@
             document.getElementById('filter_date').value = '';
             document.getElementById('filter_material').value = '';
             // Jika Anda ingin mengarahkan pengguna kembali ke halaman tanpa filter
-            window.location.href = "{{ route('dashboard') }}";
+            window.location.href = "{{ route('analists.dashboard') }}";
         });
     </script>
 

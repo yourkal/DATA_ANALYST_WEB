@@ -11,8 +11,8 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
-            'username' => 'Mukti2',
-            'password' => Hash::make('AdminMukti2'), // Pastikan menggunakan Hash untuk password
+            'username' => 'Mukti2Qty',
+            'password' => Hash::make('AdminQtyMukti2'), // Pastikan menggunakan Hash untuk password
         ]);
     }
 }

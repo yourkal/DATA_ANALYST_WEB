@@ -32,7 +32,8 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="{{ asset('images/HederLogo.png') }}" alt="Logo" style="height: 50px; width: auto; margin-right: 10px;">
+                <img src="{{ asset('images/HederLogo.png') }}" alt="Logo"
+                    style="height: 50px; width: auto; margin-right: 10px;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,17 +42,23 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     @auth
-                        <li class="nav-item">
-                            <a class="nav-link" href="/">Dashboard</a>
-                        </li>
+                        {{-- Tampilkan menu Dashboard hanya jika user bukan id 2 --}}
+                        @if (Auth::id() !== 2)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('analists.dashboard') }}">
+                                    Dashboard
+                                </a>
+                            </li>
+                        @endif
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('analists.index') }}">Edit Data Analist</a>
                         </li>
                         {{-- <li class="nav-item">
-                            <a class="nav-link" href="{{ route('produksi.index') }}">
-                                <i class="fas fa-box"></i> Produksi
-                            </a>
-                        </li> --}}
+                        <a class="nav-link" href="{{ route('produksi.index') }}">
+                            <i class="fas fa-box"></i> Produksi
+                        </a>
+                    </li> --}}
                         <li class="nav-item">
                             <form action="{{ route('logout') }}" method="POST" class="d-inline">
                                 @csrf
@@ -69,6 +76,7 @@
             </div>
         </div>
     </nav>
+
 
     <!-- Main Content -->
     <div class="container-fluid">

@@ -4,11 +4,21 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnalistController;
 use App\Http\Controllers\AuthController;
 use App\Http\Middleware\Authenticate;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProduksiController;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+
+// Route Home/Dashboard untuk user/publik
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/view/pdf', [AnalistController::class, 'view_pdf'])->name('view_pdf');
+
+// Route untuk menampilkan detail qty (dapat diakses tanpa login)
+Route::get('/analists/{id}/qty-detail', [AnalistController::class, 'qtyDetail'])->name('analists.qtyDetail');
+
 
 // Route Login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -18,6 +28,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // ==============================================================================================================================================================================================================
 // Hanya untuk admin yang login
 Route::middleware([Authenticate::class])->group(function () {
+    // Route untuk halaman utama yang menampilkan daftar analist
+    Route::get('/analists/dashboard', [AnalistController::class, 'dashboard'])->name('analists.dashboard');
     // Route untuk halaman utama yang menampilkan daftar analist
     Route::get('/analist', [AnalistController::class, 'index'])->name('analists.index');
     // Route untuk halaman form tambah analist
@@ -55,9 +67,3 @@ Route::middleware([Authenticate::class])->group(function () {
 });
 // =================================================================================================================================================================================
 
-// Route Home/Dashboard untuk user/publik
-Route::get('/', [AnalistController::class, 'dashboard'])->name('dashboard');
-Route::get('/view/pdf', [AnalistController::class, 'view_pdf'])->name('view_pdf');
-
-// Route untuk menampilkan detail qty (dapat diakses tanpa login)
-Route::get('/analists/{id}/qty-detail', [AnalistController::class, 'qtyDetail'])->name('analists.qtyDetail');
