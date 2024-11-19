@@ -20,6 +20,7 @@
         .hero {
             background: url('{{ asset('images/GAMBAR_MUKTI.jpeg') }}') no-repeat center;
             background-size: cover;
+            /* Changed to cover for better scaling */
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -30,14 +31,22 @@
 
         .content {
             background-color: rgba(0, 0, 0, 0.5);
+            /* Semi-transparent background */
             padding: 40px;
+            /* Padding for the content box */
             border-radius: 10px;
+            /* Rounded corners */
             max-width: 90%;
+            /* Limit width for smaller screens */
             margin: 0 auto;
+            /* Center the content */
             display: flex;
             flex-direction: column;
+            /* Stack items vertically */
             justify-content: center;
+            /* Center items vertically */
             align-items: center;
+            /* Center items horizontally */
             text-align: center;
         }
 
@@ -46,13 +55,17 @@
             margin-bottom: 10px;
             font-weight: bold;
             color: #ffffff;
+            text-align: center;
         }
 
         .content p {
             font-size: 20px;
             margin: 0 0 20px;
+            /* Add space below the paragraph */
             color: #ffffff;
             max-width: 600px;
+            /* Limiting width for better readability */
+            text-align: center;
         }
 
         .cards {
@@ -61,6 +74,7 @@
             gap: 20px;
             justify-content: center;
             margin-top: 20px;
+            /* Increased margin for better spacing */
         }
 
         .card-link {
@@ -70,17 +84,22 @@
 
         .card {
             width: 220px;
+            /* Card width */
             height: 220px;
+            /* Set a consistent height for cards */
             border: 1px solid #ddd;
             border-radius: 8px;
             padding: 20px;
+            text-align: center;
             background-color: #eae0e0;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+
+            /* Flexbox for centering */
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            position: relative;
+            justify-content: center;
+            align-items: center;
         }
 
         .card:hover {
@@ -90,110 +109,56 @@
 
         .card i {
             margin-bottom: 15px;
-            font-size: 3rem;
+        }
+
+        .icon-blue {
             color: #0056b3;
         }
 
         .card h3 {
             font-size: 20px;
+            /* Increased font size for titles */
             font-weight: bold;
             margin-bottom: 10px;
-        }
-
-        .card button {
-            margin-top: auto;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            background-color: #0056b3;
-            color: white;
-            cursor: pointer;
-        }
-
-        .btn-lainnya {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            padding: 8px 12px;
-            font-size: 14px;
-            border: none;
-            border-radius: 5px;
-            background-color: #28a745;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-lainnya:hover {
-            background-color: #218838;
         }
 
         /* Media Queries for Responsiveness */
         @media (max-width: 768px) {
             .content h1 {
                 font-size: 36px;
+                /* Smaller font size for smaller screens */
             }
 
             .content p {
                 font-size: 18px;
+                /* Smaller font size for smaller screens */
             }
 
             .card {
                 width: 180px;
+                /* Smaller card width for smaller screens */
             }
         }
 
         @media (max-width: 480px) {
             .content {
                 padding: 20px;
+                /* Reduce padding for smaller screens */
             }
 
             .content h1 {
                 font-size: 28px;
+                /* Even smaller font size for very small screens */
             }
 
             .content p {
                 font-size: 16px;
+                /* Even smaller font size for very small screens */
             }
 
             .card {
-                width: 150px;
-            }
-
-            .btn-lainnya {
-                font-size: 12px;
-                padding: 6px 10px;
-            }
-        }
-
-        /* Media Query for Landscape Orientation */
-        @media screen and (orientation: landscape) {
-            .content {
-                padding: 40px; /* Tambahkan padding lebih banyak untuk tampilan lanskap */
-            }
-
-            .content h1 {
-                font-size: 48px; /* Ukuran font tetap besar */
-            }
-
-            .content p {
-                font-size: 20px; /* Ukuran font tetap besar */
-            }
-
-            .cards {
-                flex-direction: row; /* Mengatur kartu dalam satu baris */
-                justify-content: center; /* Pusatkan kartu */
-                gap: 30px; /* Tambahkan jarak antar kartu */
-            }
-
-            .card {
-                width: 250px; /* Ukuran kartu sedikit lebih besar */
-                height: 250px; /* Ukuran tinggi kartu sedikit lebih besar */
-            }
-
-            .btn-lainnya {
-                font-size: 16px; /* Ukuran font tombol lebih besar */
-                padding: 10px 15px; /* Padding tombol lebih besar */
+                width: 100px;
+                /* Smaller card width for very small screens */
             }
         }
     </style>
@@ -206,17 +171,26 @@
             <h1>Selamat Datang</h1>
             <p>Silakan pilih salah satu menu di bawah sesuai dengan role anda</p>
             <div class="cards">
-                <!-- Card -->
-                <a href="{{ route('analists.dashboard') }}" class="card-link">
+                <!-- Card 1 -->
+                
+                <a href="{{ route('login') }}" class="card-link">
                     <div class="card">
-                        <i class="fa-solid fa-chart-bar"></i>
-                        <h3>Hasil</h3>
-                        <button onclick="location.href='{{ route('login') }}'">Masuk</button>
+                        <i class="fa-solid fa-database fa-3x icon-blue"></i>
+                        <h3>Data Analis</h3>
+                        <button onclick="location.href='{{ route('login') }}'"
+                            style="margin-top: 10px; padding: 10px 15px; border: none; border-radius: 5px; background-color: #0056b3; color: white; cursor: pointer;">Masuk</button>
+                    </div>
+                </a>
+                <!-- Card 2 -->
+                <a href="{{ route('login') }}" class="card-link">
+                    <div class="card">
+                        <i class="fa-solid fa-box-open fa-3x icon-blue"></i>
+                        <h3>INPUT QTY </h3>
+                        <button onclick="location.href='{{ route('login') }}'"
+                            style="margin-top: 10px; padding: 10px 15px; border: none; border-radius: 5px; background-color: #0056b3; color: white; cursor: pointer;">Masuk</button>
                     </div>
                 </a>
             </div>
-            <!-- Button to redirect to home2 -->
-            <button onclick="location.href='{{ route('home2') }}'" class="btn-lainnya"> ke Home2</button>
         </div>
     </div>
 </body>

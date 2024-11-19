@@ -8,7 +8,7 @@
                 @if(auth()->user()->id !== 2)
                 <i class="fas fa-flask"></i> Daftar Data Hasil Analist Material PT. Mukti Mandiri Lestari
                 @else
-                <i class="fas fa-flask"></i> Daftar Data Hasil Analist Material Quantity
+                <i class="fa-solid fa-box-open"></i>Input Material Quantity
                 @endif
             </h2>
             <!-- Form Pencarian -->
@@ -66,7 +66,9 @@
                         @if(auth()->user()->id !== 2)
                             <th class="text-center">Hasil Analisis</th>
                             <th class="text-center">File PDF</th>
+                            @if(auth()->user()->id !==3)
                             <th class="text-center">Aksi</th>
+                            @endif
                         @endif
                     </tr>
                 </thead>
@@ -81,10 +83,10 @@
                                 <img src="{{ asset('uploads/' . $analist->hasil_analisis) }}" alt="Hasil Analisis"
                                 width="200" height="auto" class="img-thumbnail">
                                 @else
-                                <img src="{{ asset('                                        gambar_kosong.png') }}" alt="Gambar Kosong" width="100"
+                                <img src="{{ asset('images/gambar_kosong.png') }}" alt="Gambar Kosong" width="100"
                                 class="img-thumbnail">
-                                    @endif
-                                </td>
+                                @endif
+                            </td>
                             @endif
                             <td>
                                 @if ($analist->gambar)
@@ -135,7 +137,6 @@
                         </tr>
 
                         <!-- Modal untuk Gambar -->
-                        @if(auth()->user()->id !== 2)
                             <div class="modal fade" id="imageModal-{{ $analist->id }}" tabindex="-1" role="dialog"
                                 aria-labelledby="imageModalLabel-{{ $analist->id }}" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -159,6 +160,7 @@
                             </div>
 
                             <!-- Modal untuk Hasil Analisis -->
+                        @if(auth()->user()->id !== 2)
                             <div class="modal fade" id="hasilModal-{{ $analist->id }}" tabindex="-1" role="dialog"
                                 aria-labelledby="hasilModalLabel-{{ $analist->id }}" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">

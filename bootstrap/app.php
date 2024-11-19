@@ -13,6 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'Authenticate' => App\Http\Middleware\Authenticate::class,
+            'QtyAdmin' => App\Http\Middleware\QtyAdmin::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

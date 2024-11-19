@@ -50,15 +50,18 @@
                                 </a>
                             </li>
                         @endif
-
+                        
+                        @if(Auth::id() !==3)
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('analists.index') }}">Edit Data Analist</a>
                         </li>
+                        @endif
+
                         {{-- <li class="nav-item">
                         <a class="nav-link" href="{{ route('produksi.index') }}">
                             <i class="fas fa-box"></i> Produksi
                         </a>
-                    </li> --}}
+                        </li> --}}
                         <li class="nav-item">
                             <form action="{{ route('logout') }}" method="POST" class="d-inline">
                                 @csrf

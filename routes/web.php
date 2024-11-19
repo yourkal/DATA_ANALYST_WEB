@@ -14,6 +14,7 @@ use App\Http\Controllers\ProduksiController;
 
 // Route Home/Dashboard untuk user/publik
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home2', [HomeController::class, 'index2'])->name('home2');
 Route::get('/view/pdf', [AnalistController::class, 'view_pdf'])->name('view_pdf');
 
 // Route untuk menampilkan detail qty (dapat diakses tanpa login)

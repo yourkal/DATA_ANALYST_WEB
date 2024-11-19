@@ -20,17 +20,25 @@ class AuthController extends Controller
             'username' => 'required',
             'password' => 'required',
         ]);
-
+    
         $credentials = $request->only('username', 'password');
-
+    
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/analist');
+            $user = Auth::user();
+    
+            // Periksa id user
+            if ($user->id == 2) {
+                return redirect('/analist');
+            } else {
+                return redirect()->intended('/analists/dashboard');
+            }
         }
-
+    
         return back()->withErrors([
             'loginError' => 'Username atau password salah.',
         ]);
     }
+    
 
     public function logout()
     {

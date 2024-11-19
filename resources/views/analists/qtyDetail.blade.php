@@ -6,7 +6,7 @@
 
     {{-- Tampilkan form hanya jika user login dan bukan user dengan id 1 --}}
     @auth
-        @if(Auth::id() !== 1)
+        @if(Auth::id() !== 1 && Auth::id() !== 3)
             <h3>Form Tambah Masuk dan Keluar Qty {{ $analist->nama_material }}</h3>
             <form action="{{ route('analists.storeQtyDetail', ['id' => $analist->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -67,7 +67,7 @@
                         <td>{{ $detail->barang_keluar }}</td>
                         {{-- Tampilkan aksi hanya jika user login dan bukan user dengan id 1 --}}
                         @auth
-                            @if(Auth::id() !== 1)
+                            @if(Auth::id() !== 1 && Auth::id() !== 3)
                                 <td>
                                     <form action="{{ route('analists.deleteQtyDetail', ['id' => $analist->id, 'qtyDetailId' => $detail->id]) }}" method="POST" style="display:inline;">
                                         @csrf
