@@ -22,7 +22,7 @@ class AnalistController extends Controller
             ->when($tanggal, function ($query, $tanggal) {
                 return $query->whereDate('tanggal', $tanggal);
             })
-            ->orderBy('tanggal', 'asc') // Tambahkan orderBy untuk mengurutkan berdasarkan tanggal
+            // ->orderBy('tanggal', 'asc') // Tambahkan orderBy untuk mengurutkan berdasarkan tanggal
             ->paginate(50); // Sesuaikan pagination sesuai kebutuhan
     
         return view('analists.index', compact('analists'));

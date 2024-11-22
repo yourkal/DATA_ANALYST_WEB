@@ -216,7 +216,7 @@
                 </a>
             </div>
             <!-- Button to redirect to home2 -->
-            <button onclick="location.href='{{ route('home2') }}'" class="btn-lainnya"> ke Home2</button>
+            {{-- <button onclick="location.href='{{ route('home2') }}'" class="btn-lainnya"> ke Home2</button> --}}
         </div>
     </div>
 </body>
